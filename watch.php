@@ -100,8 +100,8 @@ button:active {
 </style>
 
 <?php
-	if(isset($_GET['course_id'])){
-		$course_id = $_GET['course_id'];
+	if(isset($_REQUEST['course_id'])){
+		$course_id = $_REQUEST['course_id'];
 	}
 ?>
   <!-- Sidebar -->
@@ -113,27 +113,44 @@ button:active {
 	  <div class="position-sticky">
 		  <div class="list-group list-group-flush mx-3 mt-5">
         <?php
-			$sql2="SELECT sublesson_name, sublesson_video FROM tbl_sublesson where sublesson_id=".$course_id;
+			$sql2="SELECT * FROM tbl_lesson where course_id=$course_id";
 
 			$res2=mysqli_query($conn,$sql2);
-
 			$count2=mysqli_num_rows($res2);
 
 			if($count2>0)
 			{
 				while($row2=mysqli_fetch_assoc($res2))
 				{
-					$lesson_name=$row2['lesson_name'];
-					$video = $row2['video'];
-					$videopath = 'educator/videos/'.$video;
-					?>
-					<button id="btn" type="button" onclick="displayvideo('<?php echo $videopath; ?>')">
-						<?php echo $lesson_name; ?>
-					</button>
-					<?php
+					$lesson_id = $row2['id'];
+					$lesson_name = $row2['lesson_name'];
+					echo $lesson_name;
+					$sql3="SELECT sublesson_name, sublesson_video FROM tbl_sublesson where lesson_id=$lesson_id";
+
+					$res3=mysqli_query($conn,$sql3);
+					$count3=mysqli_num_rows($res3);
+
+					if($count3>0)
+					{
+						while($row3=mysqli_fetch_assoc($res3))
+						{
+							$sublesson_name=$row3['sublesson_name'];
+							$video = $row3['sublesson_video'];
+							$videopath = 'educator/videos/'.$video;
+							?>
+							<button id="btn" type="button" onclick="displayvideo('<?php echo $videopath; ?>')">
+								<?php echo $sublesson_name; ?>
+							</button>
+							<?php
+						}
+					}
 				}
 			}
 		?>
+
+
+
+			
       </div>
     </div>
   </nav>
