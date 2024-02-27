@@ -247,8 +247,8 @@
 				//insert into db
 				//create sql query to save or add food
 
-				$sql2 =  "INSERT INTO tbl_course (category_id, image, title, preview_video, educator_id, email, language, description, active)
-				VALUES ('$category', '$image_name', '$title', '$preview_video_name','$educator_id','$email', '$language', '$description', '$active')";
+				$sql2 =  "INSERT INTO tbl_course (category_id, image, title, preview_video, educator_id, language, description, active, price, discount)
+				VALUES ('$category', '$image_name', '$title', '$preview_video_name','$educator_id', '$language', '$description', '$active', '$price', '$discount')";
 	  
 
 				//execute query
