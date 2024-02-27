@@ -232,7 +232,7 @@
 				}
 
 				$email = $_SESSION['SESSION_EMAIL'];
-				$sqlname = "SELECT name FROM tbl_educator WHERE email='$email'";
+				$sqlname = "SELECT id FROM tbl_educator WHERE email='$email'";
 				$resname = mysqli_query($conn,$sqlname);
 				$row = mysqli_fetch_assoc($resname);
 				$educator_id = $row['id'];		
