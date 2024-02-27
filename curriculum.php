@@ -54,10 +54,10 @@
 			</button>
 					</h2>
 			
-			<div id="collapse-<?php echo $lesson_id ?>" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+			<div id="collapse-<?php echo $lesson_id ?>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 			<div class="accordion-body">
 				
-						
+			<ul>
 						<?php	
 						$totalTime = 0;			
 						$sql4 = "SELECT tbl_sublesson.sublesson_name, tbl_sublesson.duration
@@ -73,7 +73,7 @@
 							$duration = $row4['duration'];
 
 							?>
-							<ul>
+							
 							<li>
 								<i class="fas fa-play-circle"></i>
 								<p>
@@ -85,9 +85,9 @@
 						?>
 							
 					</li>
-				</ul>
+				</div>
 			</div>
-			</div>
+		</ul>
 			<?php  }}?>
 		</div>
 		</div>

@@ -235,7 +235,7 @@
 				$sqlname = "SELECT name FROM tbl_educator WHERE email='$email'";
 				$resname = mysqli_query($conn,$sqlname);
 				$row = mysqli_fetch_assoc($resname);
-				$instructor = $row['name'];		
+				$educator_id = $row['id'];		
                 $title = $_POST['title'];
 				$category = $_POST['category'];
 				$language = $_POST['language'];
@@ -247,8 +247,8 @@
 				//insert into db
 				//create sql query to save or add food
 
-				$sql2 =  "INSERT INTO tbl_course (category_id, image, title, preview_video, instructor, email, language, description, active, price, discount)
-				VALUES ('$category', '$image_name', '$title', '$preview_video_name','$instructor','$email', '$language', '$description', '$active', '$price','$discount')";
+				$sql2 =  "INSERT INTO tbl_course (category_id, image, title, preview_video, educator_id, email, language, description, active)
+				VALUES ('$category', '$image_name', '$title', '$preview_video_name','$educator_id','$email', '$language', '$description', '$active')";
 	  
 
 				//execute query
