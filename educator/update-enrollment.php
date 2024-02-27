@@ -1,8 +1,10 @@
-<?php include('header.php'); ?>
-
+<?php  
+	include('header.php');
+	include('navbar.php');
+?>
 <?php ob_start(); ?>
 
-<div class="main-content">
+<div class="main-content" style="margin-left:200px;">
 	<div class="wrapper">
 		<h1>Update Enrollment</h1>
 		<br>

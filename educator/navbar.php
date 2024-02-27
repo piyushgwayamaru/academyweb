@@ -48,10 +48,10 @@ $page = $fileName;
 
 
  <!-- Side Bar -->
- <div class="container container-fluid mb-5" >
+ <div class="container container-fluid mb-5 mt-4" >
     <div class="row">
-      <nav class="navline col-sm-3 col-md-2 sidebar d-print-none min-vh-100">
-    <div class=" sidebar-sticky text-dark">
+      <nav class="navline position-fixed col-sm-3 col-md-2 sidebar d-print-none min-vh-100">
+    <div class="text-dark">
      <ul class="nav flex-column">
       <li class="nav-item ">
        <a class="text-dark nav-link <?php if($page == 'index.php') {echo 'active bg-primary';} ?>" href="index.php">

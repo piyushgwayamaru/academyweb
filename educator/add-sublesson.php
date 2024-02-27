@@ -1,8 +1,8 @@
 <?php  
 	include('header.php');
+	include('navbar.php');
 ?>
-
-<div class="main-content">
+<div class="main-content" style="margin-left:200px;">
 	<div class="wrapper">
 		<h2>Add Sub Lesson</h2>
 		<br><br>

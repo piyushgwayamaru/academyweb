@@ -42,7 +42,7 @@ if(isset($_POST['submit'])){
 ?>
 
 
-<div class='col-sm-9'>
+<div class='col-sm-9' style="margin-left:260px;">
     <div class="mb-3" style="height: 30px;">
         <?php 
             if (isset($msg)){

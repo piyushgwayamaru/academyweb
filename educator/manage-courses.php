@@ -1,7 +1,7 @@
 <?php include('header.php');
 include('navbar.php'); 
 ?>
- <div class="col-sm-9">
+ <div class="col-sm-9" style="margin-top: 30px; margin-left:230px;">
 <div class="main-content" style="margin-top:-50px;">
 	<div class="wrapper">
 		<h2>Manage Course</h2>

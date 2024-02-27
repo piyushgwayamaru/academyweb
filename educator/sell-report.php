@@ -7,7 +7,7 @@ include('navbar.php');
 
 <!-- ------------------------------------------------------------------ -->
 
-  <div class="col-sm-9 mt-0 container-fluid">
+  <div class="col-sm-9 container-fluid"  style="margin-top: 30px; margin-left:260px;">
       <form action="" method="POST" class="d-print-none">
         <div class="form-row">
           <div class="form-group col-md-2">

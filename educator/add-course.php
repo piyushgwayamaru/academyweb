@@ -1,11 +1,12 @@
 <?php  
 	include('header.php');
+	include('navbar.php');
 ?>
 
-<div class="main-content">
+<div class="main-content" style="margin-left:200px;">
 	<div class="wrapper">
 		<h2>Add Course</h2>
-		<br><br>
+		<br>
 
 		<?php  
 
