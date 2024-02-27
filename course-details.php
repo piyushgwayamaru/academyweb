@@ -332,30 +332,31 @@ $course_instructor = $row['educator_name'];
 						  </div>
 						<!--tab panes ends-->
 					</div>
+					
 					<div class="col-lg-4">
 						<!--course sidebar start-->
 						<div class="course-sidebar box">
 							<div class="img-box position-relative" data-bs-toggle="modal" data-bs-target="#video-modal">
-								<img src="../img/instructor/1.png" class="w-100" alt="">
+								<img src="img/courses/web-development/3.jpg" class="w-100" alt="">
 								<div class="play-icon">
 									<i class="fas fa-play"></i>
 								</div>
 								<p class="text-center">Course Preview</p>
 							</div>
 							<div class="price d-flex align-content-center mb-3">
-								<span class="price-old">$100</span>
-								<span class="price-new">$49</span>
-								<span class="price-discount">51% Off</span>
+								<span class="price-old">Rs.<?php echo $price; ?></span>
+								<span class="price-new">Rs.<?php $price_new=($price/100*(100-$discount)); echo $price_new; ?></span>
+								<span class="price-discount"><?php echo $discount; ?> %</span>
 							</div>
-								<h3 class="mb-3">Course Features</h3>
-								<ul class="features-list">
-									<li>Total 15 Lessons</li>
+							<h3 class="mb-3">Course Features</h3>
+							<ul class="features-list">
+									<li>Total <?php echo $lesson_count; ?> Lessons</li>
 									<li>Other feature</li>
 									<li>Other feature</li>
 									<li>Other feature</li>
 								</ul>
 								<div class="btn-wrap">
-									<button type="button" class="btn btn-theme btn-block"><a href="enroll.php" style="color:white;">enroll now</button>
+									<a href="enroll.php?course_id=<?php echo $course_id; ?>&price_new=<?php echo $price_new; ?>" style="color:white;"><button type="button" class="btn btn-theme btn-block">Enroll now</button></a>
 								</div>
 						</div>
 						<!--course sidebar ends-->
