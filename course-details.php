@@ -74,17 +74,18 @@ if (isset($_GET['course_id']))
 								<?php
 											if ($course_ratings == 0){
 												for ($i = 1; $i <= 5; $i++) {
-												?>
+													?>
 													<span class="average-stars">
-													<i class="fa-light fa-star"></i>
-												</span>
-												<?php
+														<i class="fa-regular fa-star"></i>
+													</span>
+													<?php
 												}
 											}
 											for ($i = 1; $i <= floor($course_ratings); $i++) {
 												?>
 												<span class="average-stars">
 												<i class="fas fa-star"></i>
+
 												</span>
 												<?php
 											}
@@ -330,7 +331,7 @@ if (isset($_GET['course_id']))
 						<!--course sidebar start-->
 						<div class="course-sidebar box">
 							<div class="img-box position-relative" data-bs-toggle="modal" data-bs-target="#video-modal">
-								<img src="img/courses/web-development/3.jpg" class="w-100" alt="">
+								<img src="../img/instructor/1.png" class="w-100" alt="">
 								<div class="play-icon">
 									<i class="fas fa-play"></i>
 								</div>
@@ -349,7 +350,7 @@ if (isset($_GET['course_id']))
 									<li>Other feature</li>
 								</ul>
 								<div class="btn-wrap">
-									<button type="button" class="btn btn-theme btn-block"><a href="<?php echo SITEURL; ?>enroll.php" style="color:white;">enroll now</button>
+									<button type="button" class="btn btn-theme btn-block"><a href="enroll.php" style="color:white;">enroll now</button>
 								</div>
 						</div>
 						<!--course sidebar ends-->

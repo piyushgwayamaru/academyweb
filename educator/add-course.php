@@ -1,12 +1,12 @@
 <?php  
 	include('header.php');
-	include('navbar.php');
+	include('navbar.php')
 ?>
 
 <div class="main-content" style="margin-left:200px;">
 	<div class="wrapper">
 		<h2>Add Course</h2>
-		<br>
+		<br><br>
 
 		<?php  
 
@@ -83,14 +83,6 @@
 						</select>
 					</td>
 				</tr>
-				
-				<tr>
-					<td>Upload Preview Video:</td>
-					<td>
-						<input type="file" name="preview_video" required>
-					</td>
-				</tr>
-				
 				<tr>
 					<td>
 						<label for="language">Select Language:</label>
@@ -103,6 +95,14 @@
 						</td>
 					</td>
 				</tr>
+				
+				<tr>
+					<td>Upload Preview Video:</td>
+					<td>
+						<input type="file" name="preview_video" required>
+					</td>
+				</tr>
+			
 				<tr>
 					<td>Description:</td>
 					<td>
@@ -117,6 +117,20 @@
 					</td>
 				</tr>
 			
+				
+				<tr>
+					<td>Price:</td>
+					<td>
+                    <input type="number" name="price">
+					</td>
+				</tr>
+				<tr>
+					<td>Discount:</td>
+					<td>
+                    <input type="number" name="discount">
+					</td>
+				</tr>
+
 				<tr>
 					<td colspan="2">
 						<input type="submit" name="submit" value="Add Course" class="btn-secondary">
@@ -135,6 +149,7 @@
 					$tmpname = $_FILES['preview_video']['tmp_name'];
 					$error = $_FILES['preview_video']['error'];
 					$folder = "videos/". $filename;
+
 			
 					if($error === 0){
 						$video_ex = pathinfo($filename, PATHINFO_EXTENSION);
@@ -225,14 +240,15 @@
 				$category = $_POST['category'];
 				$language = $_POST['language'];
 				$description = $_POST['description'];
-
+				$price = $_POST['price'];
+				$discount = $_POST['discount'];
 
 
 				//insert into db
 				//create sql query to save or add food
 
-				$sql2 =  "INSERT INTO tbl_course (category_id, image, title, preview_video, instructor, email, language, description, active)
-				VALUES ('$category', '$image_name', '$title', '$preview_video_name','$instructor','$email', '$language', '$description', '$active')";
+				$sql2 =  "INSERT INTO tbl_course (category_id, image, title, preview_video, instructor, email, language, description, active, price, discount)
+				VALUES ('$category', '$image_name', '$title', '$preview_video_name','$instructor','$email', '$language', '$description', '$active', '$price','$discount')";
 	  
 
 				//execute query
