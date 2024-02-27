@@ -40,14 +40,14 @@ if (isset($_GET['course_id']))
 
 }
 
-$sql1="SELECT tbl_educator.name AS educator_name
-FROM tbl_course
-JOIN tbl_educator ON tbl_course.educator_id = tbl_educator.id
+$sql1="SELECT tbl_educator.name
+FROM tbl_educator
+JOIN tbl_course ON tbl_course.educator_id = tbl_educator.id
 WHERE tbl_course.id = '$course_id';";
 
 $res1 = mysqli_query($conn, $sql1);
 $row1 = mysqli_fetch_assoc($res1);
-$course_instructor = $row['educator_name'];
+$course_instructor = $row1['name'];
 
 
 
