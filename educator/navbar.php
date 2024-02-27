@@ -1,4 +1,7 @@
 <?php
+ob_start(); // Start output buffering
+?>
+<?php
 // Get the protocol
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
 

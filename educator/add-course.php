@@ -263,6 +263,7 @@
 					//data inserted successfully
 					$_SESSION['add'] = "<div class='success'>Course added successfully.</div>";
 					header('location:'.'manage-courses.php');
+					exit;
 				}
 				else
 				{
