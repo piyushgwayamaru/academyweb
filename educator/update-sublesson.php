@@ -4,7 +4,6 @@
 ?>
 <?php ob_start();?>
 	
-
 <div class="main-content" style="margin-left:200px;">
 	<div class="wrapper">
 		<h1>Update Sub Lesson</h1>
@@ -17,6 +16,7 @@
 			{
 				//get all the details
 				$id = $_GET['id'];
+				$lesson_id = $_GET['lesson_id'];
 
 				//sql query to get the selected sublesson
 				$sql2 = "SELECT * from tbl_sublesson WHERE sublesson_id = $id";
@@ -138,7 +138,7 @@
 			if ($res3) {
 				// Sub Lesson updated successfully
 				$_SESSION['update'] = "<div class='success'>Sub Lesson Updated successfully.</div>";
-				header("location: manage-courses.php?");
+				header("location: manage-sublesson.php?id=".$lesson_id);
 				exit();
 			} else {
 				// Failed to update lesson
