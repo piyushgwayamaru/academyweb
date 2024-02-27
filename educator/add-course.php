@@ -6,7 +6,7 @@
 <div class="main-content" style="margin-left:200px;">
 	<div class="wrapper">
 		<h2>Add Course</h2>
-		<br><br>
+		<br>
 
 		<?php  
 
