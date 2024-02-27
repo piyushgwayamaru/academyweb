@@ -106,7 +106,7 @@
 				<tr>
 					<td>Description:</td>
 					<td>
-                    <input type="textarea" name="description">
+                    <input type="textarea" name="description" required>
 					</td>
 				</tr>	
 				<tr>
@@ -121,7 +121,7 @@
 				<tr>
 					<td>Price:</td>
 					<td>
-                    <input type="number" name="price">
+                    <input type="number" name="price" required>
 					</td>
 				</tr>
 				<tr>
