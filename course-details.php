@@ -33,12 +33,21 @@ if (isset($_GET['course_id']))
 	$course_ratings=$row['ratings'];
 	$reviews_number=$row['reviews_number'];
 	// $enrolled_students=$row['enrolled_students'];
-	$course_instructor=$row['instructor'];
+	
 	$updatedAt=$row['updatedAt'];
 	$language=$row['language'];
+	$description=$row['description'];
 
 }
 
+$sql1="SELECT tbl_educator.name AS educator_name
+FROM tbl_course
+JOIN tbl_educator ON tbl_course.educator_id = tbl_educator.id
+WHERE tbl_course.id = '$course_id';";
+
+$res1 = mysqli_query($conn, $sql1);
+$row1 = mysqli_fetch_assoc($res1);
+$course_instructor = $row['educator_name'];
 
 
 
@@ -110,7 +119,7 @@ if (isset($_GET['course_id']))
 										$count4=mysqli_num_rows($res4);
 							?>
 
-								<li>enrolled students - <span><?php echo $count4; ?></span></li>
+								<li>enrolled students - <span><?php #echo $count4; ?></span></li>
 								<li>created by - <span><a href="#"><?php echo $course_instructor;  ?></a></span></li>
 								<li>last updated - <span><?php echo $updatedAt;  ?></span></li>
 								<li>language - <span><?php echo $language; ?></span></li>
@@ -137,11 +146,7 @@ if (isset($_GET['course_id']))
 							<div class="tab-pane fade" id="course-description" role="tabpanel" aria-labelledby="course-description-tab">
 								<div class="course-descirption box">
 									<h3 class="mb-4">Description</h3>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus illo sequi labore neque, eveniet illum iste maiores nihil veniam impedit enim beatae accusantium quos, rerum fugiat perferendis voluptatum excepturi est?</p>
-									<h4>For who is this course designed?</h4>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, non delectus voluptates ipsum sint cupiditate quis ducimus corrupti, sit illo nisi? Tenetur cum quae, eveniet mollitia voluptate qui totam voluptatibus!</p>
-									<h4>why should you take this course</h4>
-									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis cumque, nobis accusantium repellendus aperiam ullam deleniti voluptate nemo eveniet quo ratione illum non atque magni quos hic consequuntur nam numquam.</p>
+									 <p><?php echo $description ?></p>
 								</div>
 							</div>
 							<!--course description ends-->
@@ -157,9 +162,9 @@ if (isset($_GET['course_id']))
 												</div>
 											</div>
 											<div class="right-box">
-												<h4>john doe<span>(web developer)</span></h4>
+												<h4><?php echo $course_instructor ?></h4>
 												<ul>
-													<li><i class="fas fa-star"></i>4.5 Rating</li>
+													<!-- <li><i class="fas fa-star"></i>4.5 Rating</li> -->
 													<li><i class="fas fa-play-circle"></i>10 Courses</li>
 													<li><i class="fas fa-certificate"></i>3000 Reviews</li>
 												</ul>
