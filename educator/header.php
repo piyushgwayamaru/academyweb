@@ -24,7 +24,7 @@ include('login-check.php');
 	<header class="header">
 		<div>
 		
-			<div class="fixed-top shadow p-2 mb-2 bg-grey rounded header-main d-flex justify-content-between align-items-center">
+			<div class="fixed-top shadow p-2 mb-2 bg-white rounded header-main d-flex justify-content-between align-items-center">
 				<div class="header-logo px-4">
 					<a href="index.php"><span>Academy</span>Web</a>
 				</div>
