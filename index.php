@@ -64,12 +64,13 @@
 								$id=$row['id'];
 								$title=$row['title'];
 								$image_name=$row['image'];
-								$instructor=$row['instructor'];
+								$instructor_id=$row['educator_id'];
 								$price=$row['price'];
 								$ratings = $row['ratings'];
 								$reviews_number = $row['reviews_number'];
 
 		?>
+
 					<!--courses item starts-->
 					<div class="col-md-6 col-lg-3">
 						<div class="courses-item">
@@ -97,7 +98,11 @@
 									<h3 class="title"><?php echo $title ?></h3>
 									<div class="instructor">
 										<!-- <img src="img/instructor/1.png" alt="insrtucting"> -->
-										<span class="instructor-name"><?php echo $instructor; ?> </span>
+										<span class="instructor-name"><?php 
+										$res1 = mysqli_query($conn, "SELECT name FROM tbl_educator WHERE id='$instructor_id'");
+										$row1 = mysqli_fetch_assoc($res1);
+
+										echo $row1['name']; ?> </span>
 									</div>
 									<div class="rating">
 										<span class="average-rating">(<?php echo $ratings ?>)</span>
