@@ -12,7 +12,7 @@
 <?php include('header.php');
 include('navbar.php'); 
 ?>
-<div class="col-sm-9 container-fluid mt-0">
+<div class="col-sm-9 container-fluid " style="margin-top: 30px; margin-left:260px;">
 <div class="main-content" style="margin-top:-30px">
      <h2 class="my-4">Payment Status </h2>
      <form method="post" action="">

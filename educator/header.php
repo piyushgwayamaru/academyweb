@@ -18,13 +18,13 @@ include('login-check.php');
 	<link rel="stylesheet" class="js-color-style" href="../css/colors/color-1.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
-<body class="m-4"> 
+<body class="mt-5"> 
 
 <!--header starts-->
 	<header class="header">
 		<div>
 		
-			<div class="shadow p-2 mb-2 bg-grey rounded header-main d-flex justify-content-between align-items-center">
+			<div class="fixed-top shadow p-2 mb-2 bg-grey rounded header-main d-flex justify-content-between align-items-center">
 				<div class="header-logo px-4">
 					<a href="index.php"><span>Academy</span>Web</a>
 				</div>

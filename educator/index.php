@@ -25,7 +25,7 @@ $totalcourse = $result->num_rows;
  $result = $conn->query($sql);
  $totalsold = $result->num_rows;
 ?>
-  <div class="col-sm-9">
+  <div class="col-sm-9" style="margin-top: 30px; margin-left:280px;">
     <div class="row mx-5 text-center">
       <div class="col-sm-4  ">
         <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">

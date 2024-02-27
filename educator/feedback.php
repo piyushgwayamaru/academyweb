@@ -2,7 +2,7 @@
 include('navbar.php'); 
 ?>
   
-<div class="col-sm-9 mt-0 container-fluid">
+<div class="col-sm-9 container-fluid"  style="margin-top: 30px; margin-left:270px;">
     <!--Table-->
     <p class=" bg-dark text-white p-2">List of Feedbacks</p>
     <?php

@@ -3,7 +3,7 @@ include('header.php');
 include('navbar.php');
 ?>
 
-<div class="col-sm-9">
+<div class="col-sm-9" style="margin-top: 30px; margin-left:230px;">
 <div class="main-content" style="margin-top:-50px;">
 	<div class="wrapper">
 		<h2>Manage lesson</h2>
@@ -97,10 +97,6 @@ include('navbar.php');
 									<a href="update-lesson.php?id=<?php echo $id; ?>" class="btn btn-secondary"><i class="fas fa-pen fa-2x"></a></i>
 							
 									<a href="delete-lesson.php?id=<?php echo $id; ?>&course_id=<?php echo $course_id; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this lesson?')"><i class="far fa-trash-alt fa-2x"></i></a>
-							
-									
-									
-									
 								</td>
 							</tr>
 
