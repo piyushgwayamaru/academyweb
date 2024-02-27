@@ -4,7 +4,6 @@
 ?>
 <?php ob_start();?>
 	
-
 <div class="main-content" style="margin-left:200px;">
 	<div class="wrapper">
 		<h1>Update Course</h1>
@@ -132,6 +131,19 @@
 						<input <?php if ($active == "No") {echo "checked";} ?> type="radio" name="active" value="No">No
 					</td>
 				</tr>
+
+				<tr>
+					<td>Price:</td>
+					<td>
+                    <input type="number" name="price">
+					</td>
+				</tr>
+				<tr>
+					<td>Discount:</td>
+					<td>
+                    <input type="number" name="discount">
+					</td>
+				</tr>
 				
 				<tr>
 					<td>
@@ -153,6 +165,8 @@
 			$instructor = $_POST['instructor'];
             $category = $_POST['category'];
             $active = $_POST['active'];
+			$price = $_POST['price'];
+            $discount = $_POST['discount'];
 
 
 
@@ -238,7 +252,9 @@
 				title = '$title',
 				image = '$image_name',
 				instructor = '$instructor',
-                active = '$active'
+                active = '$active',
+				price = '$price',
+                discount = '$discount'
 
 				WHERE id=$id
 			";
