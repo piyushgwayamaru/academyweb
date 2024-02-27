@@ -109,7 +109,7 @@ include('navbar.php');
 								<td>
 									<a href="add-lesson.php?id=<?php echo $id; ?>" class="btn btn-info" title="Add lessons"> <i class="fa-solid fa-plus fa-1x"></a></i> &nbsp; 
 									<a href="update-course.php?id=<?php echo $id; ?>" class="btn btn-secondary" title="Update course"><i class="fa-solid fa-pen fa-2x"></a></i> &nbsp;&nbsp; 
-									<a href="delete-course.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn btn-danger" title="Delete course"><i class="far fa-trash-alt fa-2x"></a></i>
+									<a href="delete-course.php?id=<?php echo $id; ?>&course_id=<?php echo $course_id; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this lesson?')"><i class="far fa-trash-alt fa-2x"></i></a>
 									
 								</td>
 							</tr>
