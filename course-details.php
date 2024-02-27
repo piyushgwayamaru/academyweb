@@ -32,7 +32,7 @@ if (isset($_GET['course_id']))
 	$course_title=$row['title'];
 	$course_ratings=$row['ratings'];
 	$reviews_number=$row['reviews_number'];
-	$enrolled_students=$row['enrolled_students'];
+	// $enrolled_students=$row['enrolled_students'];
 	$course_instructor=$row['instructor'];
 	$updatedAt=$row['updatedAt'];
 	$language=$row['language'];
@@ -72,6 +72,15 @@ if (isset($_GET['course_id']))
 								<span class="average-rating">(<?php echo $course_ratings ?>)</span>		
 								<span class="average-stars">
 								<?php
+											if ($course_ratings == 0){
+												for ($i = 1; $i <= 5; $i++) {
+												?>
+													<span class="average-stars">
+													<i class="fa-light fa-star"></i>
+												</span>
+												<?php
+												}
+											}
 											for ($i = 1; $i <= floor($course_ratings); $i++) {
 												?>
 												<span class="average-stars">
