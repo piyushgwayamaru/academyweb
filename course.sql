@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2024 at 11:37 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Feb 27, 2024 at 12:40 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -248,17 +248,9 @@ CREATE TABLE `tbl_course` (
   `ratings` float NOT NULL,
   `reviews_number` int(11) NOT NULL,
   `discount` float NOT NULL,
-  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `educator_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_course`
---
-
-INSERT INTO `tbl_course` (`id`, `category_id`, `image`, `title`, `instructor`, `email`, `language`, `description`, `preview_video`, `active`, `duration`, `price`, `ratings`, `reviews_number`, `discount`, `updatedAt`) VALUES
-(36, 1, 'Course-Name-5041.jpg', 'Mern stack', '', 'educator@gmail.com', 'English', 'embark kasdfasdfads', 'video-65dc6bfbae2774.12773066.mp4', 'Yes', 0, 0, 0, 0, 0, '2024-02-27 09:22:41'),
-(37, 1, 'Course-Name-657.png', 'CSS', 'educator', 'educator@gmail.com', 'English', 'embark kasdfasdfads', 'video-65dd8195914b15.14926883.mp4', 'Yes', 0, 0, 0, 0, 0, '2024-02-27 09:22:41'),
-(40, 1, 'Course-Name-3928.jpg', 'HTML Full Course', 'educator', 'educator@gmail.com', 'english', 'dESCRIPTION FOR HTML COURSE', 'video-65dda7f07661e5.57042789.mp4', 'Yes', 0, 0, 4, 3, 0, '2024-02-27 09:25:16');
 
 -- --------------------------------------------------------
 
@@ -270,19 +262,18 @@ CREATE TABLE `tbl_educator` (
   `id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL,
-  `code` text NOT NULL
+  `password` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_educator`
 --
 
-INSERT INTO `tbl_educator` (`id`, `name`, `email`, `password`, `code`) VALUES
-(2, 'piyush', 'shresthpiyusha@gmail.com', '86f500cd7b7d38e5d4ae6cde3920f589', ''),
-(5, 'Test', 'test@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', '709fe72aa2f8d70abb459752f91abc80'),
-(6, 'educator', 'educator@gmail.com', 'ae3a8f55b3ddd9466c9866bc2261e22e', ''),
-(7, 'sam', 'sam@gmail.com', '332532dcfaa1cbf61e2a266bd723612c', '');
+INSERT INTO `tbl_educator` (`id`, `name`, `email`, `password`) VALUES
+(2, 'piyush', 'shresthpiyusha@gmail.com', '86f500cd7b7d38e5d4ae6cde3920f589'),
+(5, 'Test', 'test@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e'),
+(6, 'educator', 'educator@gmail.com', 'ae3a8f55b3ddd9466c9866bc2261e22e'),
+(7, 'sam', 'sam@gmail.com', '332532dcfaa1cbf61e2a266bd723612c');
 
 -- --------------------------------------------------------
 
@@ -291,30 +282,39 @@ INSERT INTO `tbl_educator` (`id`, `name`, `email`, `password`, `code`) VALUES
 --
 
 CREATE TABLE `tbl_enroll` (
+  `order_id` varchar(255) NOT NULL,
   `id` int(11) NOT NULL,
   `email` varchar(200) NOT NULL,
   `course_id` int(11) NOT NULL,
-  `status` varchar(200) NOT NULL,
   `order_date` date DEFAULT NULL,
   `amount` int(11) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` int(11) NOT NULL,
   `gender` varchar(255) NOT NULL,
   `course` varchar(255) NOT NULL,
-  `order_id` varchar(255) NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_enroll`
 --
 
-INSERT INTO `tbl_enroll` (`id`, `email`, `course_id`, `status`, `order_date`, `amount`, `first_name`, `last_name`, `address`, `phone`, `gender`, `course`, `order_id`) VALUES
-(15, 'piyush@gmail.com', 1, 'Accepted', NULL, 0, 'piyush', 'gwayamaru', 'bkt', 0, 'male', 'css', 'ORDS98956453'),
-(16, 'shresthapiyush6@gmail.com', 2, 'Accepted', NULL, 0, 'piyusha', 'g2', 'bkt2', 918264389, 'male', 'HTML\r\n', ''),
-(17, 'b@gmail.com', 1, 'YES', '2024-02-02', 0, '', '', '', 0, '', '', ''),
-(18, 'a@gmail.com', 1, 'YES', '2024-02-01', 0, '', '', '', 0, '', '', '');
+INSERT INTO `tbl_enroll` (`order_id`, `id`, `email`, `course_id`, `order_date`, `amount`, `name`, `address`, `phone`, `gender`, `course`, `status`) VALUES
+('', 19, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
+('', 20, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
+('GtSRrjgFUG', 21, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
+('iMuteHSuMx', 22, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
+('75aKdFf77Y', 23, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
+('3x5I0u3rOr', 24, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
+('iYo0I6QuFq', 25, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
+('abT42KNvW7', 26, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 0),
+('8iVdTe9qSD', 27, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
+('RLntbmA35f', 28, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
+('PqBGNdefn0', 29, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
+('vyALAShEMZ', 30, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
+('ItTIf0AjYH', 31, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
+('yTYwASFXVL', 32, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1);
 
 -- --------------------------------------------------------
 
@@ -503,7 +503,8 @@ ALTER TABLE `tbl_contact`
 --
 ALTER TABLE `tbl_course`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`);
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `fk_tbl_course_educator` (`educator_id`);
 
 --
 -- Indexes for table `tbl_educator`
@@ -603,7 +604,7 @@ ALTER TABLE `tbl_contact`
 -- AUTO_INCREMENT for table `tbl_course`
 --
 ALTER TABLE `tbl_course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tbl_educator`
@@ -615,7 +616,7 @@ ALTER TABLE `tbl_educator`
 -- AUTO_INCREMENT for table `tbl_enroll`
 --
 ALTER TABLE `tbl_enroll`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `tbl_feedback`
@@ -655,6 +656,7 @@ ALTER TABLE `tbl_user`
 -- Constraints for table `tbl_course`
 --
 ALTER TABLE `tbl_course`
+  ADD CONSTRAINT `fk_tbl_course_educator` FOREIGN KEY (`educator_id`) REFERENCES `tbl_educator` (`id`),
   ADD CONSTRAINT `tbl_course_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `tbl_category` (`id`);
 COMMIT;
 
