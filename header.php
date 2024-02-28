@@ -31,6 +31,16 @@
 					<div class="header-logo">
 						<a href="index.php"><span>Academy</span>Web</a>
 					</div>
+					<!-- Search Courses -->
+					<div class="search-container ">
+							<form action="courses.php" method="post">
+								<div class="search-fields d-flex ">
+									<input type="text" class="form-control search-input border border-dark rounded mr-2 " placeholder="search" name="searchitem" required>
+									<button type="submit" name="search" style="background-color: #CB4343; color: white;" class="btn search-button ml-2 "><i class="fa-solid fa-magnifying-glass"></i></button>
+								</div>
+							</form>
+					</div>
+
 					<button type="button" class="header-hamburger-btn js-header-menu-toggler">
 						<span></span>
 					</button>
@@ -40,7 +50,6 @@
 							<i class="fas fa-times"></i>
 						</button>
 						<ul class="menu">
-							<?php #include "search.php"; ?>
 							<li class="menu-item"><a href="index.php">home</a></li>
 
 							<li class="menu-item menu-item-has-children"><a href="courses.php">courses</a></li>

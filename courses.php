@@ -12,7 +12,7 @@
 
 		$query = "SELECT * FROM tbl_course WHERE title LIKE '%$searchitem%' AND active = 'yes'";
 		$result = mysqli_query($conn, $query);
-		$sno = 1;
+	
 		if (mysqli_num_rows($result) > 0 ){
 			while($row = mysqli_fetch_assoc($result)){
 				$id=$row['id'];
@@ -24,7 +24,7 @@
 				$reviews_number = $row['reviews_number'];
 ?>
 
-				<div class="col-md-6 col-lg-3">
+				<div class="col-sm-9">
 					<div class="courses-item">						
 						<a href="course-details.php?course_id=<?php echo $id; ?>" class="link">
 							<div class="courses-item-inner">
