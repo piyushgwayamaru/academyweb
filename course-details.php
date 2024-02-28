@@ -33,7 +33,6 @@ if (isset($_GET['course_id']))
 	$course_title=$row['title'];
 	$price=$row['price'];
 	$ratings=$row['ratings'];
-	$reviews_number=$row['reviews_number'];
 	$language=$row['language'];
 	$description=$row['description'];
 	$discount=$row['discount'];
@@ -49,8 +48,68 @@ WHERE tbl_course.id = '$course_id';";
 $res1 = mysqli_query($conn, $sql1);
 $row1 = mysqli_fetch_assoc($res1);
 $course_instructor = $row1['name'];
+?>
 
-
+<!-- For the ratings read from review table -->
+<?php
+	$sum =0;
+	$count =0;
+    $count1 =0;
+    $count2 =0;
+    $count3 =0;
+    $count4 =0;
+    $count5 =0;
+	$sql="SELECT * FROM tbl_reviews where course_id = $course_id";
+	if($result=mysqli_query($conn,$sql))
+	{
+		if(mysqli_num_rows($result)>0)
+		{
+			while($row=mysqli_fetch_array($result))
+			{
+				
+				$rating_data = $row['rating_data'];
+                if($rating_data == 1){
+                    $count1++;
+                }
+                if($rating_data == 2){
+                    $count2++;
+                }
+                if($rating_data == 3){
+                    $count3++;
+                }
+                if($rating_data == 4){
+                    $count4++;
+                }
+                if($rating_data == 5){
+                    $count5++;
+                }
+				$sum += $rating_data;
+				$count++;
+				
+			}
+		}
+	}
+	
+	function realNum($num) {
+		$num1 = floor($num);
+		$num2 = $num1+.5;
+		$num3 = $num1+1;
+		if ($num >= $num1 && $num < $num2) {
+			$answer = $num1;
+		} 
+		elseif ($num >= $num2 && $num < $num3) {
+			$answer = $num2;
+		}
+		return $answer;
+	}
+	if($count !=0){
+		$real_rating = $sum/$count;
+	} else{
+		$real_rating = 0;
+	}
+	
+	// echo $real_rating;
+	$real_rating_final = realNum($real_rating);
 
 ?>
 
@@ -79,10 +138,10 @@ $course_instructor = $row1['name'];
 								<?php echo $course_title;  ?>
 							</h2>
 							<div class="rating">
-								<span class="average-rating">(<?php echo $ratings ?>)</span>		
+								<span class="average-rating">(<?php echo $real_rating_final ?>)</span>		
 								<span class="average-stars">
 								<?php
-											if ($ratings == 0){
+											if ($real_rating_final == 0){
 												for ($i = 1; $i <= 5; $i++) {
 													?>
 													<span class="average-stars">
@@ -91,7 +150,7 @@ $course_instructor = $row1['name'];
 													<?php
 												}
 											}
-											for ($i = 1; $i <= floor($ratings); $i++) {
+											for ($i = 1; $i <= floor($real_rating_final); $i++) {
 												?>
 												<span class="average-stars">
 												<i class="fas fa-star"></i>
@@ -99,7 +158,7 @@ $course_instructor = $row1['name'];
 												</span>
 												<?php
 											}
-											$rem = $i-$ratings;
+											$rem = $i-$real_rating_final;
 											if($rem==0.5){
 												?>
 												<span class="average-stars">
@@ -109,7 +168,7 @@ $course_instructor = $row1['name'];
 											}
 										?>
 								</span>
-								<span class="reviews">(<?php echo $reviews_number;?>)</span>
+								
 							</div>
 							<ul>
 
@@ -135,7 +194,7 @@ $course_instructor = $row1['name'];
 							  <button class="nav-link active" id="course-curriculum-tab" data-bs-toggle="tab" data-bs-target="#course-curriculum" type="button" role="tab" aria-controls="course-curriculum" aria-selected="true">curriculum</button>
 							  <button class="nav-link" id="course-description-tab" data-bs-toggle="tab" data-bs-target="#course-description" type="button" role="tab" aria-controls="course-description" aria-selected="false">description</button>
 							  <button class="nav-link" id="course-instructor-tab" data-bs-toggle="tab" data-bs-target="#course-instructor" type="button" role="tab" aria-controls="course-instructor" aria-selected="false">instructor</button>
-							  <button class="nav-link" id="course-reviews-tab" data-bs-toggle="tab" data-bs-target="#course-reviews" type="button" role="tab" aria-controls="course-reviews" aria-selected="false">reviews</button>
+						
 							</div>
 						  </nav>
 						<!--course tab ends-->
@@ -179,158 +238,7 @@ $course_instructor = $row1['name'];
 								</div>
 							</div>
 							<!--course instructor-->
-							<!--course reviews starts-->
-							<div class="tab-pane fade" id="course-reviews" role="tabpanel" aria-labelledby="course-reviews-tab">
-								<div class="course-reviews box">
-									<!-- rating summary start -->
-									<div class="rating-summary">
-										<h3 class="mb-4 text-capitalize">students feedback</h3>
-										<div class="row">
-											<div class="col-md-4 d-flex align-items-center justify-content-center text-center">
-												<div class="rating-box">
-													<div class="average-rating">4.5</div>
-													<div class="average-stars">
-														<i class="fas fa-star"></i>
-														<i class="fas fa-star"></i>
-														<i class="fas fa-star"></i>
-														<i class="fas fa-star"></i>
-														<i class="fas fa-star-half-alt"></i>
-													</div>
-													<div class="reviews">230 Reviews</div>
-												</div>
-											</div>
-											<div class="col-md-8">
-												<div class="rating-bars">
-													<!-- rating bars item start -->
-													<div class="rating-bars-item">
-														<div class="star-text">5 Star</div>
-														<div class="progress">
-															<div class="progress-bar" style="width: 50%;"></div>
-														</div>
-														<div class="percent">50%</div>
-													</div>
-													<!-- rating bars item ends -->
-													<!-- rating bars item start -->
-													<div class="rating-bars-item">
-														<div class="star-text">4 Star</div>
-														<div class="progress">
-															<div class="progress-bar" style="width: 30%;"></div>
-														</div>
-														<div class="percent">30%</div>
-													</div>
-													<!-- rating bars item ends -->
-													<!-- rating bars item start -->
-													<div class="rating-bars-item">
-														<div class="star-text">3 Star</div>
-														<div class="progress">
-															<div class="progress-bar" style="width: 10%;"></div>
-														</div>
-														<div class="percent">10%</div>
-													</div>
-													<!-- rating bars item ends -->
-													<!-- rating bars item start -->
-													<div class="rating-bars-item">
-														<div class="star-text">2 Star</div>
-														<div class="progress">
-															<div class="progress-bar" style="width: 7%;"></div>
-														</div>
-														<div class="percent">7%</div>
-													</div>
-													<!-- rating bars item ends -->
-													<!-- rating bars item start -->
-													<div class="rating-bars-item">
-														<div class="star-text">1 Star</div>
-														<div class="progress">
-															<div class="progress-bar" style="width: 3%;"></div>
-														</div>
-														<div class="percent">3%</div>
-													</div>
-													<!-- rating bars item ends -->
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- rating summary ends -->
-
-									<!-- reviews filter start -->
-									<div class="reviews-filter">
-										<h3 class="mb-4">Reviews</h3>
-										<form action="">
-											<div class="form-group">
-												<i class="fas fa-chevron-down select-icon"></i>
-												<select class="form-control">
-													<option value="">All Reviews</option>
-													<option value="1">1 Star</option>
-													<option value="2">2 Star</option>
-													<option value="3">3 Star</option>
-													<option value="4">4 Star</option>
-													<option value="5">5 Star</option>
-												</select>
-											</div>
-										</form>
-									</div>
-									<!-- reviews filter ends -->
-
-									<!-- reviews list start -->
-									<div class="reviews-list">
-										<!-- reviews item start -->
-										<div class="reviews-item">
-											<div class="img-box">
-												<img src="img/review/1.png" alt="">
-											</div>
-											<h4>john doe</h4>
-											<div class="stars-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="date">1 week ago</span>
-											</div>
-											<p>Great work. I learned lot of things about JavaScript in this course.</p>
-										</div>
-										<!-- reviews item end -->
-										<!-- reviews item start -->
-										<div class="reviews-item">
-											<div class="img-box">
-												<img src="img/review/1.png" alt="">
-											</div>
-											<h4>john doe</h4>
-											<div class="stars-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="date">1 week ago</span>
-											</div>
-											<p>Great work. I learned lot of things about JavaScript in this course.</p>
-										</div>
-										<!-- reviews item end -->
-										<!-- reviews item start -->
-										<div class="reviews-item">
-											<div class="img-box">
-												<img src="img/review/1.png" alt="">
-											</div>
-											<h4>john doe</h4>
-											<div class="stars-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="date">1 week ago</span>
-											</div>
-											<p>Great work. I learned lot of things about JavaScript in this course.</p>
-										</div>
-										<!-- reviews item end -->
-									</div>
-									<!-- reviews list ends -->
-									<button type="button" class="btn btn-theme">More Reviews</button>
-								</div>
-							</div>
-							<!--course reviews ends-->
-						  </div>
+						</div> 
 						<!--tab panes ends-->
 					</div>
 					
@@ -339,31 +247,9 @@ $course_instructor = $row1['name'];
 						<div class="course-sidebar box">
 							<div class="img-box position-relative h-100 w-100" data-bs-toggle="modal" data-bs-target="#video-modal">
 								<img src="img/instructor/1.png" class="img-thumbnail" alt="">
-								<!-- <div class="play-icon">
-									<i class="fas fa-play"></i>
-								</div> -->
-								<?php
-					$sql3="SELECT preview_video FROM tbl_course where id=$course_id";
-					
-					$res3=mysqli_query($conn,$sql3);
-					$count3=mysqli_num_rows($res3);
-					
-					if($count3>0)
-					{
-						while($row3=mysqli_fetch_assoc($res3))
-						{
-							$video = $row3['preview_video'];
-							$videopath = 'video/'.$video;
-							?>
-							<button id="btn" type="button" onclick="displayvideo('<?php echo $videopath; ?>')"><div class="play-icon">
+								<div class="play-icon">
 									<i class="fas fa-play"></i>
 								</div>
-
-							</button>
-							<?php
-						}
-					}
-			?>
 								<p class="text-center">Course Preview</p>
 							</div>
 							<div class="price d-flex align-content-center mb-3">
@@ -393,26 +279,30 @@ $course_instructor = $row1['name'];
 
 				<!-- course preview modal start -->
 
-	<div class="modal fade video-modal js-course-preview-modal" id="video-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade video-modal js-course-preview-modal" id="video-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
-					
 	  <div class="modal-content">
 		<div class="modal-body p-0">  
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 				<i class="fas fa-times"></i>
 			</button>
-			
-			<div class="h-500 w-500">
-					
-<div class="container pt-4 js-course-preview-video"  id="videoContainer">
-			  
-			  </div>
+			<div class="ratio ratio-16x9">
+				<video controls class="js-course-preview-video">
+				 <?php
+				 
+				 	$sql = "SELECT preview_video FROM tbl_course where id= '$course_id'";
+    				$query = mysqli_query($conn,$sql);
 
+					$result = mysqli_fetch_assoc($query);										
+					echo $result['preview_video'];
+					?>
+				<source src="video/<?php echo $result['preview_video']; ?>"></source>
+				</video>
 			 </div>
-			</div>
 		</div>
+	  </div>
 	</div>
-	</div>
+  </div>
 	<!-- course preview modal end -->
 	
 

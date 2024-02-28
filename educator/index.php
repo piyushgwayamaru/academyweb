@@ -13,7 +13,8 @@ include('navbar.php');
  } else {
   echo "<script> location.href='index.php'; </script>";
  }
-$sql = "SELECT * FROM tbl_course";
+ 
+ $sql = "SELECT * FROM tbl_course";
 $result = $conn->query($sql);
 $totalcourse = $result->num_rows;
 

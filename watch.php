@@ -1,4 +1,21 @@
-<?php include('header1.php'); ?>
+<?php include('config/constants.php'); ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>AcademyWeb</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+	<!-- <link rel="stylesheet" class="js-glass-style" href="css/glass.css" disabled>  -->
+	<link rel="stylesheet" class="js-color-style" href="css/colors/color-1.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
 <style>
 	body {
   		background-color: #fbfbfb;
@@ -47,7 +64,7 @@
 
 	
 	video {
-		margin-top:-90px;
+		margin-top:-30px;
 		width: 1080px;
 		height: 650px;
 
@@ -62,7 +79,7 @@
   <!-- Sidebar -->
   <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
 	  <div class="header-logo" >
-		  <a href="index.php"><span>Academy</span>Web</a>
+		  <a href="index.php" style = "margin-left:20px;"><span>Academy</span>Web</a>
 		  <hr>
 	  </div>
 	  <div class="position-sticky">

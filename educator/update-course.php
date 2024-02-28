@@ -162,7 +162,6 @@
 			$id = $_POST['id'];
 			$title = $_POST['title'];
 			$current_image = $_POST['current_image'];
-			$instructor = $_POST['instructor'];
             $category = $_POST['category'];
             $active = $_POST['active'];
 			$price = $_POST['price'];
@@ -251,7 +250,6 @@
                 category_id = '$category',
 				title = '$title',
 				image = '$image_name',
-				instructor = '$instructor',
                 active = '$active',
 				price = '$price',
                 discount = '$discount'

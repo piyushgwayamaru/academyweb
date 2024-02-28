@@ -116,7 +116,6 @@
 		    $name = $_POST['name'];
         $phone = $_POST['phone'];   
         $email = $_POST['email'];
-        $course = $_POST['course'];
         $course_id = $id;
         $status= 0;
         
@@ -140,7 +139,6 @@
 			      name = '$name',
             phone = '$phone',
             email = '$email',
-            course = '$course',
             course_id='$course_id', 
             status = '$status',
             order_id = '$order_id'

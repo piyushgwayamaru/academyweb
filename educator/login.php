@@ -68,20 +68,14 @@ $msg="";
 			{
 				$row = mysqli_fetch_assoc($result);
 
-				if(empty($row['code']))
-				{
-
+				
 					$_SESSION['SESSION_EMAIL'] = $email;
+					$educator_id = $row['id'];
+
+					$_SESSION['educator_id'] = $educator_id;
+
 					
 					header('location:'.'index.php');
-
-				}
-
-				else 
-				{
-					$msg= "<div class='alert alert-info'>First Verify Your Account and Try Again. </div>";
-					echo $msg;
-				}
 				
 			}
 			else

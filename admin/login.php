@@ -51,7 +51,7 @@
 		 //$username = $_POST['username'];
 		 //$password = md5($_POST['password']);
 		 $username = mysqli_real_escape_string($conn,$_POST['username']);
-		 $password = md5($_POST['password']);
+		 $password = $_POST['password'];
 
 		 //sql query to check whether the username and pw exists or not
 		 $sql = "SELECT * FROM tbl_admin WHERE username = '$username' AND password = '$password' ";
