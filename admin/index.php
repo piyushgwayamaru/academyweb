@@ -1,4 +1,5 @@
-<?php include('header.php'); ?>
+<?php include('header.php'); 
+include ('navbar.php');?>
 
 
 
@@ -7,7 +8,7 @@
 				
 
 					<!-- <div class="col-lg-3 col-md-4 col-sm-6 " style="align-item:center">
-						<div class="card border-light mb-3" style="max-width: 18rem; height:10rem;">
+						<div class="card border-light mb-3" 	style="max-width: 18rem; height:10rem;">
 						
 
                                 // $sql="Select * FROM tbl_contact";

@@ -92,7 +92,7 @@ include('header.php');
 							<td><?php echo $active; ?>
 							<td>
 								<a href="update-category.php?id=<?php echo $id; ?>" class="btn-secondary">Update Category</a> 
-								<a href="delete-category.php?id=<?php echo $id; ?>" class="btn-danger">Delete Category</a>
+								<a href="delete-category.php?id=<?php echo $id; ?>" class="btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete Category</a>
 							</td>
 						</tr>
 

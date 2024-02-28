@@ -63,7 +63,12 @@ $page = $fileName;
        </a>
       </li>
       <li class="nav-item">
-       <a class="text-dark nav-link <?php if($page == 'manage-courses.php') {echo 'active bg-primary';} ?>" href="manage-courses.php">
+       <a class="text-dark nav-link <?php 
+          if (in_array($page, ['manage-courses.php', 'add-course.php', 'update-course.php', 'manage-lesson.php', 'add-lesson.php', 'update-lesson.php', 'manage-sublesson.php', 'add-sublesson.php', 'update-sublesson.php'])) {
+              echo 'active bg-primary';
+          }
+          ?>
+          " href="manage-courses.php">
         <i class="fab fa-accessible-icon"></i>
         Courses
        </a>

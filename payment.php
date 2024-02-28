@@ -16,8 +16,8 @@
 										<input value="0" name="pdc" type="hidden">
 										<input value="epay_payment" name="scd" type="hidden">
 										<input value="<?php echo $order_id;?>" name="pid" type="hidden">
-										<input value="http://localhost/academy_web/esewa_payment_success.php?cid=<?php echo $course_id ?>" type="hidden" name="su">
-										<input value="http://localhost/academy/esewa_payment_failed.php" type="hidden" name="fu">
+										<input value="http://localhost/academyweb/esewa_payment_success.php?cid=<?php echo $course_id ?>" type="hidden" name="su">
+										<input value="http://localhost/academyweb/esewa_payment_failed.php" type="hidden" name="fu">
 										<input type="image" src="img/esewa.png">
       								</form>
  

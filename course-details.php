@@ -1,6 +1,7 @@
 <?php include('header.php'); ?>
 
 <?php 
+$lesson_count=0;
 
 if(!isset($_SESSION['SESSION_EMAIL']) && empty($_SESSION['SESSION_EMAIL']))
 {
@@ -30,14 +31,14 @@ if (isset($_GET['course_id']))
 	// get title 
 	
 	$course_title=$row['title'];
-	$course_ratings=$row['ratings'];
+	$price=$row['price'];
+	$ratings=$row['ratings'];
 	$reviews_number=$row['reviews_number'];
-	// $enrolled_students=$row['enrolled_students'];
-	
-	$updatedAt=$row['updatedAt'];
 	$language=$row['language'];
 	$description=$row['description'];
-
+	$discount=$row['discount'];
+	$id=$row['id'];
+	$updatedAt=$row['updatedAt'];
 }
 
 $sql1="SELECT tbl_educator.name
@@ -78,10 +79,10 @@ $course_instructor = $row1['name'];
 								<?php echo $course_title;  ?>
 							</h2>
 							<div class="rating">
-								<span class="average-rating">(<?php echo $course_ratings ?>)</span>		
+								<span class="average-rating">(<?php echo $ratings ?>)</span>		
 								<span class="average-stars">
 								<?php
-											if ($course_ratings == 0){
+											if ($ratings == 0){
 												for ($i = 1; $i <= 5; $i++) {
 													?>
 													<span class="average-stars">
@@ -90,7 +91,7 @@ $course_instructor = $row1['name'];
 													<?php
 												}
 											}
-											for ($i = 1; $i <= floor($course_ratings); $i++) {
+											for ($i = 1; $i <= floor($ratings); $i++) {
 												?>
 												<span class="average-stars">
 												<i class="fas fa-star"></i>
@@ -98,7 +99,7 @@ $course_instructor = $row1['name'];
 												</span>
 												<?php
 											}
-											$rem = $i-$course_ratings;
+											$rem = $i-$ratings;
 											if($rem==0.5){
 												?>
 												<span class="average-stars">
@@ -113,14 +114,14 @@ $course_instructor = $row1['name'];
 							<ul>
 
 							<?php 
-										$sql4="SELECT * FROM tbl_course where id=".$course_id;
+										$sql4="SELECT * FROM tbl_enroll where course_id=".$course_id;
 
 										$res4=mysqli_query($conn,$sql4);
 
 										$count4=mysqli_num_rows($res4);
 							?>
 
-								<li>enrolled students - <span><?php #echo $count4; ?></span></li>
+								<!-- <li>enrolled students - <span><?php #echo $count4['enrolled']; ?></span></li> -->
 								<li>created by - <span><a href="#"><?php echo $course_instructor;  ?></a></span></li>
 								<li>last updated - <span><?php echo $updatedAt;  ?></span></li>
 								<li>language - <span><?php echo $language; ?></span></li>
@@ -336,11 +337,33 @@ $course_instructor = $row1['name'];
 					<div class="col-lg-4">
 						<!--course sidebar start-->
 						<div class="course-sidebar box">
-							<div class="img-box position-relative" data-bs-toggle="modal" data-bs-target="#video-modal">
-								<img src="img/courses/web-development/3.jpg" class="w-100" alt="">
-								<div class="play-icon">
+							<div class="img-box position-relative h-100 w-100" data-bs-toggle="modal" data-bs-target="#video-modal">
+								<img src="img/instructor/1.png" class="img-thumbnail" alt="">
+								<!-- <div class="play-icon">
+									<i class="fas fa-play"></i>
+								</div> -->
+								<?php
+					$sql3="SELECT preview_video FROM tbl_course where id=$course_id";
+					
+					$res3=mysqli_query($conn,$sql3);
+					$count3=mysqli_num_rows($res3);
+					
+					if($count3>0)
+					{
+						while($row3=mysqli_fetch_assoc($res3))
+						{
+							$video = $row3['preview_video'];
+							$videopath = 'video/'.$video;
+							?>
+							<button id="btn" type="button" onclick="displayvideo('<?php echo $videopath; ?>')"><div class="play-icon">
 									<i class="fas fa-play"></i>
 								</div>
+
+							</button>
+							<?php
+						}
+					}
+			?>
 								<p class="text-center">Course Preview</p>
 							</div>
 							<div class="price d-flex align-content-center mb-3">
@@ -369,23 +392,110 @@ $course_instructor = $row1['name'];
 
 
 				<!-- course preview modal start -->
-<div class="modal fade video-modal js-course-preview-modal" id="video-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+	<div class="modal fade video-modal js-course-preview-modal" id="video-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
+					
 	  <div class="modal-content">
 		<div class="modal-body p-0">  
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 				<i class="fas fa-times"></i>
 			</button>
-			<div class="ratio ratio-16x9">
-				 <video controls class="js-course-preview-video">
-					 <source src="video/course-preview.mp4" type="video/mp4"> 
-				 </video>
+			
+			<div class="h-500 w-500">
+					
+<div class="container pt-4 js-course-preview-video"  id="videoContainer">
+			  
+			  </div>
+
 			 </div>
+			</div>
 		</div>
-	  </div>
 	</div>
-  </div>
-  <!-- course preview modal end -->
+	</div>
+	<!-- course preview modal end -->
+	
 
 
-		<?php include('footer.php'); ?>
+  
+  <script>
+	  function displayvideo(videoPath) {
+      // Create a video element
+      var videoElement = document.createElement('video');
+      videoElement.controls = true;
+      videoElement.src = videoPath;
+	  //   document.getElementById("videoContainer").innerHTML = videoPath;
+      // Get the video container and append the video element
+      var videoContainer = document.getElementById('videoContainer');
+      videoContainer.innerHTML = ''; // Clear existing content
+      videoContainer.appendChild(videoElement);
+    }
+	
+	// const btn = document.getElementById('btn');
+	
+	// 	btn.addEventListener('click', function onClick() {
+		// 	btn.style.backgroundColor = 'salmon';
+		// 	btn.style.color = 'white';
+		// });
+		
+	</script>
+<style>
+	body {
+		background-color: #fbfbfb;
+	}
+	@media (min-width: 991.98px) {
+		main {
+			padding-left: 240px;
+		}
+	}
+	
+	/* Sidebar */
+	.sidebar {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		padding: 17px 0 0; /* Height of navbar */
+		box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+		width: 240px;
+		z-index: 600;
+	}
+	
+	@media (max-width: 991.98px) {
+		.sidebar {
+			width: 100%;
+			
+		}
+	}
+	.sidebar .active {
+		border-radius: 5px;
+		box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+	}
+	
+	.sidebar-sticky {
+		position: relative;
+		top: 0;
+		height: calc(100vh - 48px);
+		padding-top: 0.5rem;
+		overflow-x: hidden;
+		overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+	}
+	button {
+		margin-top:10px;
+		border-radius: 3px;
+	}	
+	
+	
+	video {
+    margin-top: 10px;
+    width: 500px;
+    height: 500px;
+    display: block; /* Ensures it behaves like a block-level element */
+    margin-left: auto; /* Centers the element horizontally */
+    margin-right: auto; /* Centers the element horizontally */
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+</style>
+	<?php include('footer.php'); ?>

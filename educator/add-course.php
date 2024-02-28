@@ -160,7 +160,7 @@
 						if(in_array($video_ex_lc, $allowed_exs)){
 			
 							$preview_video_name = uniqid("video-",true). '.'.$video_ex_lc;
-							$video_upload_path= 'videos/'.$preview_video_name;
+							$video_upload_path= '../video/'.$preview_video_name;
 							move_uploaded_file($tmpname, $video_upload_path);
 						}
 					}	

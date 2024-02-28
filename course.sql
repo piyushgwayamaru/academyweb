@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2024 at 12:40 PM
+-- Generation Time: Feb 28, 2024 at 04:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -201,7 +201,6 @@ INSERT INTO `tbl_category` (`id`, `name`, `active`) VALUES
 (1, 'Web Development', 'Yes'),
 (3, 'Game Development', 'Yes'),
 (4, 'Data Science', 'Yes'),
-(5, 'Game Development', 'Yes'),
 (6, 'Programming Language', 'Yes');
 
 -- --------------------------------------------------------
@@ -237,13 +236,10 @@ CREATE TABLE `tbl_course` (
   `category_id` int(11) NOT NULL,
   `image` varchar(200) NOT NULL,
   `title` varchar(200) NOT NULL,
-  `instructor` varchar(200) NOT NULL,
-  `email` varchar(250) NOT NULL,
   `language` varchar(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `preview_video` varchar(250) NOT NULL,
   `active` varchar(100) NOT NULL,
-  `duration` int(155) NOT NULL,
   `price` int(255) NOT NULL,
   `ratings` float NOT NULL,
   `reviews_number` int(11) NOT NULL,
@@ -251,6 +247,16 @@ CREATE TABLE `tbl_course` (
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `educator_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_course`
+--
+
+INSERT INTO `tbl_course` (`id`, `category_id`, `image`, `title`, `language`, `description`, `preview_video`, `active`, `price`, `ratings`, `reviews_number`, `discount`, `updatedAt`, `educator_id`) VALUES
+(46, 1, 'Course-Name-9017.jpg', 'Mern stack', 'english', 'described', 'video-65ddd36b91ba80.77755098.mp4', 'Yes', 0, 0, 0, 0, '2024-02-27 12:19:55', 6),
+(47, 1, 'Course-Name-9934.png', 'CSS', 'english', 'asdfasdf', 'video-65ddd554dd87d9.77078133.mp4', 'Yes', 0, 0, 0, 0, '2024-02-27 12:28:04', 6),
+(49, 1, 'Course-Name-7336.jpg', 'html', 'english', 'sdfdf', 'video-65ddd86884c3a3.82048796.mp4', 'Yes', 2000, 0, 0, 20, '2024-02-27 12:41:12', 6),
+(50, 1, 'Course-Name-8127.jpg', 'HTML', 'english', 'sasdfasdfasdf', 'video-65de9c67171209.68841986.mp4', 'Yes', 5000, 0, 0, 20, '2024-02-28 02:37:27', 6);
 
 -- --------------------------------------------------------
 
@@ -314,7 +320,11 @@ INSERT INTO `tbl_enroll` (`order_id`, `id`, `email`, `course_id`, `order_date`, 
 ('PqBGNdefn0', 29, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
 ('vyALAShEMZ', 30, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
 ('ItTIf0AjYH', 31, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
-('yTYwASFXVL', 32, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1);
+('yTYwASFXVL', 32, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
+('9YNl8hW9TU', 33, 'nabraj@gmail.com', 49, NULL, 0, 'nabraj', '', 2147483647, '', '49', 0),
+('Ksb63LDtTU', 34, 'nabraj@gmail.com', 50, NULL, 0, 'nabraj', '', 2147483647, '', '50', 0),
+('mlZepkvafJ', 35, 'nabraj@gmail.com', 50, NULL, 0, 'nabraj', '', 0, '', '50', 0),
+('6RSsFkrglZ', 36, 'nabraj@gmail.com', 50, NULL, 0, 'nabraj', '', 2147483647, '', '50', 1);
 
 -- --------------------------------------------------------
 
@@ -381,7 +391,15 @@ INSERT INTO `tbl_lesson` (`id`, `course_id`, `lesson_name`, `active`) VALUES
 (32, 36, 'mern day 1', 'Yes'),
 (33, 37, 'CSS Day 1', 'Yes'),
 (34, 40, 'HTML Introduction', 'Yes'),
-(35, 40, 'HTML forms', 'Yes');
+(35, 40, 'HTML forms', 'Yes'),
+(36, 46, 'mern day 1', 'Yes'),
+(37, 46, 'mern day 2', 'Yes'),
+(38, 48, 'mern day 1', 'Yes'),
+(39, 48, 'CSS Day 3', 'Yes'),
+(40, 49, 'mern day 1', 'Yes'),
+(41, 49, 'CSS Day 1', 'Yes'),
+(42, 50, 'HTML DAY 1', 'Yes'),
+(43, 50, 'HTML DAY 2', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -414,7 +432,15 @@ INSERT INTO `tbl_sublesson` (`sublesson_id`, `lesson_id`, `sublesson_name`, `sub
 (11, 33, 'day 2', 'video-65dd821ed6e129.00426963.mp4', 'Yes', '10:00', ''),
 (12, 34, 'HTML Basics', 'video-65dda8553d4869.38796994.mp4', 'Yes', '00:12:00', ''),
 (13, 35, 'HTML Form Elements', 'video-65dda8c23e4c90.73627715.mp4', 'Yes', '00:10:00', ''),
-(14, 35, 'HTML Form Action', 'video-65dda9105f17d4.75242436.mp4', 'Yes', '00:13:12', '');
+(14, 35, 'HTML Form Action', 'video-65dda9105f17d4.75242436.mp4', 'Yes', '00:13:12', ''),
+(15, 36, 'mongo', 'video-65ddd3a9f10977.61777218.mp4', 'Yes', '10:00', ''),
+(16, 36, 'express', 'video-65ddd3c949d1e5.71235730.mp4', 'Yes', '18:00', ''),
+(17, 38, 'express', 'video-65ddd5a263b174.35367369.mp4', 'Yes', '18:00', ''),
+(18, 41, 'day 2', 'video-65ddd8c702b3d5.59179960.mp4', 'Yes', '18:00', ''),
+(19, 42, 'BEGINNERS ', 'video-65de9dd7be4bb9.73463944.mp4', 'Yes', '00:18:00', ''),
+(20, 42, 'BEGINNERS DAY 2', 'video-65de9dfc1c7f54.86405857.mp4', 'Yes', '00:22:00', ''),
+(21, 43, 'DAY 2 FOR BEG', 'video-65de9e8f7d9903.80459719.mp4', 'Yes', '00:25:12', ''),
+(22, 43, 'DAY 22', 'video-65de9eab8a5d49.90830450.mp4', 'Yes', '00:18:20', '');
 
 -- --------------------------------------------------------
 
@@ -604,7 +630,7 @@ ALTER TABLE `tbl_contact`
 -- AUTO_INCREMENT for table `tbl_course`
 --
 ALTER TABLE `tbl_course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `tbl_educator`
@@ -616,7 +642,7 @@ ALTER TABLE `tbl_educator`
 -- AUTO_INCREMENT for table `tbl_enroll`
 --
 ALTER TABLE `tbl_enroll`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tbl_feedback`
@@ -634,13 +660,13 @@ ALTER TABLE `tbl_instructor_enroll`
 -- AUTO_INCREMENT for table `tbl_lesson`
 --
 ALTER TABLE `tbl_lesson`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tbl_sublesson`
 --
 ALTER TABLE `tbl_sublesson`
-  MODIFY `sublesson_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sublesson_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

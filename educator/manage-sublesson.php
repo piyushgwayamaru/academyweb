@@ -93,6 +93,7 @@ include('navbar.php');
 							$pdf_notes = $row['pdf_notes'];
 							$active = $row['active'];
 							?>
+							
 
 							<tr>
 								<td><?php echo $sn++; ?></td>
@@ -101,7 +102,7 @@ include('navbar.php');
 								<td><?php echo $active; ?></td>
 								<td><?php echo $video; ?></td>
 								<td><?php echo $duration; ?></td>
-								<td><?php echo $pdf_notes; ?></td>
+								<td><a href="/academyweb/educator/pdf_notes/<?php echo $pdf_notes?>" target = "_blank"> <img src="<?php echo '../img/instructor/pdfimg.png'; ?>" alt="Image Description" height="50px" width= "40px;"></a></td>
 								<td>
 									
 									<a href="update-sublesson.php?id=<?php echo $id;?>" class="btn btn-secondary"><i class="fas fa-pen fa-1x"></a></i>
