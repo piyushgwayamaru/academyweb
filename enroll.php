@@ -20,6 +20,19 @@
       $name = $row['name'];
       $email = $row['email'];    
     }
+     
+    $sql = "SELECT * FROM tbl_course WHERE id='$course_id'";
+    $res = mysqli_query($conn,$sql);
+
+				$count=mysqli_num_rows($res);
+
+				if($count>0)
+				{
+					while($row=mysqli_fetch_assoc($res))
+					{
+						$image_name=$row['image'];
+          }
+        }
 ?>
 <section class="h-100">
   <div class="container py-3 h-100">
@@ -28,9 +41,9 @@
         <div class="card card-registration my-4">
           <div class="row g-0">
             <div class="col-xl-6 d-none d-xl-block">
-              <img src="img/courses/music/banner.png"
+            <img src="img/admin/course/<?php echo $image_name; ?>"
                 alt="Sample photo" class="img-fluid"
-                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:52rem" />
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:20rem" />
             </div>
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2024 at 04:25 AM
+-- Generation Time: Mar 03, 2024 at 06:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,162 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `admin_id` int(11) NOT NULL,
-  `admin_name` varchar(255) NOT NULL,
-  `admin_email` varchar(255) NOT NULL,
-  `admin_pass` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_pass`) VALUES
-(1, 'Admin Kumar', 'admin@gmail.com', 'admin');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `course`
---
-
-CREATE TABLE `course` (
-  `course_id` int(11) NOT NULL,
-  `course_name` text NOT NULL,
-  `course_desc` text NOT NULL,
-  `course_author` varchar(255) NOT NULL,
-  `course_img` text NOT NULL,
-  `course_duration` text NOT NULL,
-  `course_price` int(11) NOT NULL,
-  `course_original_price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `course`
---
-
-INSERT INTO `course` (`course_id`, `course_name`, `course_desc`, `course_author`, `course_img`, `course_duration`, `course_price`, `course_original_price`) VALUES
-(8, 'Learn Guitar The Easy Wayy', 'This course is your \"Free Pass\" to playing guitar. It is the most direct and to the point complete online guitar course.', 'Adil', '../image/courseimg/Guitar.jpg', '3 Hours', 1655, 1800),
-(9, 'Complete PHP Bootcamp', 'This course will help you get all the Object Oriented PHP, MYSQLi and ending the course by building a CMS system.', 'Rajesh Kumar', '../image/courseimg/php.jpg', '3 Months', 700, 1700),
-(10, 'Learn Python A-Z', 'This is the most comprehensive, yet straight-forward, course for the Python programming language.', 'Rahul Kumar', '../image/courseimg/Python.jpg', '4 Months', 800, 1800),
-(11, 'Hands-on Artificial Intelligence', 'Learn and Master how AI works and how it is changing our lives in this Course.\r\nlives in this Course.', 'Jay Veeru', '../image/courseimg/ai.jpg', '6 Months', 900, 1900),
-(12, 'Learn Vue JS', 'The skills you will learn from this course is applicable to the real world, so you can go ahead and build similar app.', 'Jay Shukla', '../image/courseimg/vue.jpg', '2 Months', 100, 1000),
-(13, 'Angular JS', 'Angular is one of the most popular frameworks for building client apps with HTML, CSS and TypeScript.', 'Sonam Gupta', '../image/courseimg/angular.jpg', '4 Month', 800, 1600),
-(16, 'Python Complete', 'This is complete Python COurse', 'RK', '../image/courseimg/Python.jpg', '4 hours', 500, 4000),
-(17, 'Learn React Native', 'THis is react native for android and iso app development', 'GeekyShows', '../image/courseimg/Machine.jpg', '2 months', 200, 3000);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `courseorder`
---
-
-CREATE TABLE `courseorder` (
-  `co_id` int(11) NOT NULL,
-  `order_id` varchar(255) NOT NULL,
-  `stu_email` varchar(255) NOT NULL,
-  `course_id` int(11) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `respmsg` text NOT NULL,
-  `amount` int(11) NOT NULL,
-  `order_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `courseorder`
---
-
-INSERT INTO `courseorder` (`co_id`, `order_id`, `stu_email`, `course_id`, `status`, `respmsg`, `amount`, `order_date`) VALUES
-(10, 'ORDS59885531', 'sonam@gmail.com', 10, 'TXN_SUCCESS', 'Txn Success', 800, '2020-07-04');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lesson`
---
-
-CREATE TABLE `lesson` (
-  `lesson_id` int(11) NOT NULL,
-  `lesson_name` text NOT NULL,
-  `lesson_desc` text NOT NULL,
-  `lesson_link` text NOT NULL,
-  `course_id` int(11) NOT NULL,
-  `course_name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `lesson`
---
-
-INSERT INTO `lesson` (`lesson_id`, `lesson_name`, `lesson_desc`, `lesson_link`, `course_id`, `course_name`) VALUES
-(32, 'Introduction to Python ', 'Introduction to Python Desc', '../lessonvid/video2.mp4', 10, 'Learn Python A-Z'),
-(33, 'How Python Works', 'How Python Works Descc', '../lessonvid/video3.mp4', 10, 'Learn Python A-Z'),
-(34, 'Why Python is powerful', 'Why Python is powerful Desc', '../lessonvid/video9.mp4', 10, 'Learn Python A-Z'),
-(35, 'Everyone should learn Python ', 'Everyone should learn Python  Desccc', '../lessonvid/video1.mp4', 10, 'Learn Python A-Z'),
-(36, 'Introduction to PHP', 'Introduction to PHP Desc', '../lessonvid/video4.mp4', 9, 'Complete PHP Bootcamp'),
-(37, 'How PHP works', 'How PHP works Desc', '../lessonvid/video5.mp4', 9, 'Complete PHP Bootcamp'),
-(38, 'is PHP really easy ?', 'is PHP really easy ? desc', '../lessonvid/video6.mp4', 9, 'Complete PHP Bootcamp'),
-(39, 'Introduction to Guitar44', 'Introduction to Guitar desc1', '../lessonvid/video7.mp4', 8, 'Learn Guitar The Easy Way'),
-(40, 'Type of Guitar', 'Type of Guitar Desc2', '../lessonvid/video8.mp4', 8, 'Learn Guitar The Easy Way'),
-(41, 'Intro Hands-on Artificial Intelligence', 'Intro Hands-on Artificial Intelligence desc', '../lessonvid/video10.mp4', 11, 'Hands-on Artificial Intelligence'),
-(42, 'How it works', 'How it works descccccc', '../lessonvid/video11.mp4', 11, 'Hands-on Artificial Intelligence'),
-(43, 'Inro Learn Vue JS', 'Inro Learn Vue JS desc', '../lessonvid/video12.mp4', 12, 'Learn Vue JS'),
-(44, 'intro Angular JS', 'intro Angular JS desc', '../lessonvid/video13.mp4', 13, 'Angular JS'),
-(48, 'Intro to Python Complete', 'This is lesson number 1', '../lessonvid/video11.mp4', 16, 'Python Complete'),
-(49, 'Introduction to React Native', 'This intro video of React native', '../lessonvid/video11.mp4', 17, 'Learn React Native');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `student`
---
-
-CREATE TABLE `student` (
-  `stu_id` int(11) NOT NULL,
-  `stu_name` varchar(255) NOT NULL,
-  `stu_email` varchar(255) NOT NULL,
-  `stu_pass` varchar(255) NOT NULL,
-  `stu_occ` varchar(255) NOT NULL,
-  `stu_img` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`stu_id`, `stu_name`, `stu_email`, `stu_pass`, `stu_occ`, `stu_img`) VALUES
-(171, 'Captain Marvel', 'cap@example.com', '123456', ' Web Designer', '../image/stu/student2.jpg'),
-(172, 'Ant Man', 'ant@example.com', '123456', ' Web Developer', '../image/stu/student4.jpg'),
-(173, ' Dr Strange', 'doc@example.com', '123456', ' Web Developer', '../image/stu/student1.jpg'),
-(174, 'Scarlet Witch', 'witch@example.com', '123456', 'Web Designer', '../image/stu/student3.jpg'),
-(176, ' Shaktiman', 'shaktiman@ischool.com', '123456', 'Software ENgg', '../image/stu/shaktiman.jpg'),
-(178, ' Mario', 'mario@ischool.com', '1234567', ' Web Dev', '../image/stu/super-mario-2690254_1280.jpg'),
-(182, ' sonam', 'sonam@gmail.com', '123456', ' Web Dev', '../image/stu/student2.jpg');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_admin`
 --
 
 CREATE TABLE `tbl_admin` (
   `id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
-  `username` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL
+  `password` varchar(200) NOT NULL,
+  `username` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_admin`
 --
 
-INSERT INTO `tbl_admin` (`id`, `name`, `username`, `password`) VALUES
-(6, 'testadmin', 'admin', '21232f297a57a5a743894a0e4a801fc3'),
-(7, 'admin', 'admin', 'admin');
+INSERT INTO `tbl_admin` (`id`, `name`, `password`, `username`) VALUES
+(1, 'admin', 'admin', 'admin'),
+(6, 'testadmin', '21232f297a57a5a743894a0e4a801fc3', ''),
+(11, 'piyush', '86f500cd7b7d38e5d4ae6cde3920f589', 'piyush');
 
 -- --------------------------------------------------------
 
@@ -213,17 +75,17 @@ CREATE TABLE `tbl_contact` (
   `id` int(11) NOT NULL,
   `fullname` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `phone` varchar(200) NOT NULL,
-  `message` varchar(200) NOT NULL
+  `message` varchar(200) NOT NULL,
+  `mark_as_read` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_contact`
 --
 
-INSERT INTO `tbl_contact` (`id`, `fullname`, `email`, `phone`, `message`) VALUES
-(17, 'Piyush Gwayamaru', 'shresthapiyush6@gmail.com', '9800000000', 'I need a php coursess freely.'),
-(18, 'Piyush Gwayamaru', 'shresthapiyush6@gmail.com', '9800000000', 'I need a php coursess freely.');
+INSERT INTO `tbl_contact` (`id`, `fullname`, `email`, `message`, `mark_as_read`) VALUES
+(17, 'Piyush Gwayamaru', 'shresthapiyush6@gmail.com', 'I need a php coursess freely.', ''),
+(18, 'Piyush Gwayamaru', 'shresthapiyush6@gmail.com', 'I need a php coursess freely.', '');
 
 -- --------------------------------------------------------
 
@@ -242,7 +104,6 @@ CREATE TABLE `tbl_course` (
   `active` varchar(100) NOT NULL,
   `price` int(255) NOT NULL,
   `ratings` float NOT NULL,
-  `reviews_number` int(11) NOT NULL,
   `discount` float NOT NULL,
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `educator_id` int(11) NOT NULL
@@ -252,11 +113,23 @@ CREATE TABLE `tbl_course` (
 -- Dumping data for table `tbl_course`
 --
 
-INSERT INTO `tbl_course` (`id`, `category_id`, `image`, `title`, `language`, `description`, `preview_video`, `active`, `price`, `ratings`, `reviews_number`, `discount`, `updatedAt`, `educator_id`) VALUES
-(46, 1, 'Course-Name-9017.jpg', 'Mern stack', 'english', 'described', 'video-65ddd36b91ba80.77755098.mp4', 'Yes', 0, 0, 0, 0, '2024-02-27 12:19:55', 6),
-(47, 1, 'Course-Name-9934.png', 'CSS', 'english', 'asdfasdf', 'video-65ddd554dd87d9.77078133.mp4', 'Yes', 0, 0, 0, 0, '2024-02-27 12:28:04', 6),
-(49, 1, 'Course-Name-7336.jpg', 'html', 'english', 'sdfdf', 'video-65ddd86884c3a3.82048796.mp4', 'Yes', 2000, 0, 0, 20, '2024-02-27 12:41:12', 6),
-(50, 1, 'Course-Name-8127.jpg', 'HTML', 'english', 'sasdfasdfasdf', 'video-65de9c67171209.68841986.mp4', 'Yes', 5000, 0, 0, 20, '2024-02-28 02:37:27', 6);
+INSERT INTO `tbl_course` (`id`, `category_id`, `image`, `title`, `language`, `description`, `preview_video`, `active`, `price`, `ratings`, `discount`, `updatedAt`, `educator_id`) VALUES
+(56, 1, 'Course-Name-7701.png', 'CSS', 'english', 'embark kasdfasdfads', 'video-65deeaa0670ef2.51334984.mp4', 'Yes', 1500, 0, 0, '2024-02-29 04:50:30', 6),
+(57, 6, 'Course-Name-4611.png', 'C Programming', 'english', 'C programming ', 'video-65df1bfd57a0e1.24725569.mp4', 'Yes', 2000, 0, 2, '2024-02-29 01:44:06', 6),
+(60, 1, 'Course-Name-5024.png', 'JavaScript Course Beginners', 'english', 'Course Description: Are you eager to dive into the world of web development? JavaScript is an essential tool for anyone looking to build dynamic, interactive websites and web applications. This beginner-level course is designed to provide you with a solid foundation in JavaScript programming, regardless of your prior experience with coding.', 'video-65e0016cb36bb5.91855889.mp4', 'Yes', 2000, 0, 13, '2024-02-29 04:00:44', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_courseorder`
+--
+
+CREATE TABLE `tbl_courseorder` (
+  `order_id` int(11) NOT NULL,
+  `orderdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `course_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -279,7 +152,8 @@ INSERT INTO `tbl_educator` (`id`, `name`, `email`, `password`) VALUES
 (2, 'piyush', 'shresthpiyusha@gmail.com', '86f500cd7b7d38e5d4ae6cde3920f589'),
 (5, 'Test', 'test@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e'),
 (6, 'educator', 'educator@gmail.com', 'ae3a8f55b3ddd9466c9866bc2261e22e'),
-(7, 'sam', 'sam@gmail.com', '332532dcfaa1cbf61e2a266bd723612c');
+(7, 'sam', 'sam@gmail.com', '332532dcfaa1cbf61e2a266bd723612c'),
+(8, 'teacher', 'teacher@gmail.com', '8d788385431273d11e8b43bb78f3aa41');
 
 -- --------------------------------------------------------
 
@@ -290,41 +164,24 @@ INSERT INTO `tbl_educator` (`id`, `name`, `email`, `password`) VALUES
 CREATE TABLE `tbl_enroll` (
   `order_id` varchar(255) NOT NULL,
   `id` int(11) NOT NULL,
-  `email` varchar(200) NOT NULL,
   `course_id` int(11) NOT NULL,
-  `order_date` date DEFAULT NULL,
   `amount` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` int(11) NOT NULL,
   `gender` varchar(255) NOT NULL,
-  `course` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_enroll`
 --
 
-INSERT INTO `tbl_enroll` (`order_id`, `id`, `email`, `course_id`, `order_date`, `amount`, `name`, `address`, `phone`, `gender`, `course`, `status`) VALUES
-('', 19, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
-('', 20, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
-('GtSRrjgFUG', 21, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
-('iMuteHSuMx', 22, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
-('75aKdFf77Y', 23, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
-('3x5I0u3rOr', 24, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
-('iYo0I6QuFq', 25, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
-('abT42KNvW7', 26, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 0),
-('8iVdTe9qSD', 27, 'ram@gmail.com', 34, NULL, 0, 'ram', '', 1234567890, '', '34', 0),
-('RLntbmA35f', 28, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
-('PqBGNdefn0', 29, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
-('vyALAShEMZ', 30, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
-('ItTIf0AjYH', 31, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
-('yTYwASFXVL', 32, 'ram@gmail.com', 27, NULL, 0, 'ram', '', 1234567890, '', '27', 1),
-('9YNl8hW9TU', 33, 'nabraj@gmail.com', 49, NULL, 0, 'nabraj', '', 2147483647, '', '49', 0),
-('Ksb63LDtTU', 34, 'nabraj@gmail.com', 50, NULL, 0, 'nabraj', '', 2147483647, '', '50', 0),
-('mlZepkvafJ', 35, 'nabraj@gmail.com', 50, NULL, 0, 'nabraj', '', 0, '', '50', 0),
-('6RSsFkrglZ', 36, 'nabraj@gmail.com', 50, NULL, 0, 'nabraj', '', 2147483647, '', '50', 1);
+INSERT INTO `tbl_enroll` (`order_id`, `id`, `course_id`, `amount`, `name`, `address`, `phone`, `gender`, `status`, `email`, `order_date`) VALUES
+('bYSwkSSgId', 54, 60, 0, 'nabraj', '', 2147483647, '', 1, 'nabraj@gmail.com', '2024-02-29 04:09:59'),
+('criioHmQ7L', 55, 60, 0, 'piyush', '', 2147483647, '', 1, 'piyush@gmail.com', '2024-02-29 04:57:50');
 
 -- --------------------------------------------------------
 
@@ -382,24 +239,37 @@ CREATE TABLE `tbl_lesson` (
 --
 
 INSERT INTO `tbl_lesson` (`id`, `course_id`, `lesson_name`, `active`) VALUES
-(18, 27, 'day 4', 'Yes'),
-(23, 27, 'Day 6 of mern', 'Yes'),
-(25, 34, 'Unreal Engine 5.3 Beginner Tutorial', 'Yes'),
-(26, 34, 'Unreal Engine Full Architecture', 'Yes'),
-(30, 27, 'day 5', 'Yes'),
-(31, 27, 'day 4', 'Yes'),
-(32, 36, 'mern day 1', 'Yes'),
-(33, 37, 'CSS Day 1', 'Yes'),
-(34, 40, 'HTML Introduction', 'Yes'),
-(35, 40, 'HTML forms', 'Yes'),
-(36, 46, 'mern day 1', 'Yes'),
-(37, 46, 'mern day 2', 'Yes'),
-(38, 48, 'mern day 1', 'Yes'),
-(39, 48, 'CSS Day 3', 'Yes'),
-(40, 49, 'mern day 1', 'Yes'),
-(41, 49, 'CSS Day 1', 'Yes'),
-(42, 50, 'HTML DAY 1', 'Yes'),
-(43, 50, 'HTML DAY 2', 'Yes');
+(44, 56, 'CSS Day 1', 'Yes'),
+(45, 56, 'CSS Day 2', 'Yes'),
+(50, 60, 'Introduction', 'Yes'),
+(51, 60, 'Conditionals', 'Yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_reviews`
+--
+
+CREATE TABLE `tbl_reviews` (
+  `review_id` int(10) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `user_review` varchar(255) NOT NULL,
+  `rating_data` int(11) NOT NULL,
+  `datetime` date NOT NULL,
+  `course_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_reviews`
+--
+
+INSERT INTO `tbl_reviews` (`review_id`, `user_name`, `user_review`, `rating_data`, `datetime`, `course_id`) VALUES
+(23, 'Piyush', 'ddfsaf', 3, '2024-02-28', 57),
+(24, 'asdf', 'qer', 2, '2024-02-28', 56),
+(25, 'John', 'I have gone through all the courses. I have known alot.', 4, '2024-02-28', 56),
+(26, 'dfdf', 'q23easd', 1, '2024-02-28', 56),
+(27, 'Nabraj', 'Excellent course.', 4, '2024-02-29', 59),
+(28, 'Piyush', 'course review', 3, '2024-02-29', 56);
 
 -- --------------------------------------------------------
 
@@ -422,25 +292,16 @@ CREATE TABLE `tbl_sublesson` (
 --
 
 INSERT INTO `tbl_sublesson` (`sublesson_id`, `lesson_id`, `sublesson_name`, `sublesson_video`, `active`, `duration`, `pdf_notes`) VALUES
-(1, 18, 'day 4 ddd', '', 'Yes', '20', ''),
-(5, 18, 'god 1', 'video-65dc5f47dcf317.99934067.mp4', 'Yes', '19:00', ''),
-(6, 23, 'abc', 'video-65dc6583345e92.39396306.mp4', 'Yes', '20', ''),
-(7, 23, 'mern day 2', '', 'Yes', '20', ''),
-(8, 32, 'day 1', 'video-65dc6c34429193.66533724.mp4', 'Yes', '10:00', ''),
-(9, 32, 'day 2', 'video-65dc6c55648af7.39294050.mp4', 'Yes', '10:00', ''),
-(10, 33, 'day 1', 'video-65dd820a4b3032.50608982.mp4', 'Yes', '10:00', ''),
-(11, 33, 'day 2', 'video-65dd821ed6e129.00426963.mp4', 'Yes', '10:00', ''),
-(12, 34, 'HTML Basics', 'video-65dda8553d4869.38796994.mp4', 'Yes', '00:12:00', ''),
-(13, 35, 'HTML Form Elements', 'video-65dda8c23e4c90.73627715.mp4', 'Yes', '00:10:00', ''),
-(14, 35, 'HTML Form Action', 'video-65dda9105f17d4.75242436.mp4', 'Yes', '00:13:12', ''),
-(15, 36, 'mongo', 'video-65ddd3a9f10977.61777218.mp4', 'Yes', '10:00', ''),
-(16, 36, 'express', 'video-65ddd3c949d1e5.71235730.mp4', 'Yes', '18:00', ''),
-(17, 38, 'express', 'video-65ddd5a263b174.35367369.mp4', 'Yes', '18:00', ''),
-(18, 41, 'day 2', 'video-65ddd8c702b3d5.59179960.mp4', 'Yes', '18:00', ''),
-(19, 42, 'BEGINNERS ', 'video-65de9dd7be4bb9.73463944.mp4', 'Yes', '00:18:00', ''),
-(20, 42, 'BEGINNERS DAY 2', 'video-65de9dfc1c7f54.86405857.mp4', 'Yes', '00:22:00', ''),
-(21, 43, 'DAY 2 FOR BEG', 'video-65de9e8f7d9903.80459719.mp4', 'Yes', '00:25:12', ''),
-(22, 43, 'DAY 22', 'video-65de9eab8a5d49.90830450.mp4', 'Yes', '00:18:20', '');
+(26, 44, 'day 1', 'video-65df38481be054.64356636.mp4', 'Yes', '00:03:38', 'pdf-65df38472d7bd1.64597477.pdf'),
+(27, 44, 'day 2', 'video-65df4391d75254.59761444.mp4', 'Yes', '00:00:28', 'pdf-65df4391af4778.14001832.pdf'),
+(28, 45, 'css margin', 'video-65df43e3e43f73.05403949.mp4', 'Yes', '00:03:38', 'pdf-65df43e3d5c899.77672314.pdf'),
+(29, 45, 'css background', 'video-65df43f85fd1b0.12146130.mp4', 'Yes', '00:00:28', 'pdf-65df43f84f20e5.95782476.pdf'),
+(38, 50, 'Introduction + Setup', 'video-65e001e161a497.32927735.mp4', 'Yes', '00:13:45', 'pdf-65e001e090d1e7.16477631.pdf'),
+(39, 50, 'Variables in JavaScript ', 'video-65e0021773f479.29916393.mp4', 'Yes', '00:13:33', 'pdf-65e00217614af6.81096062.pdf'),
+(40, 50, 'const, let and var ', 'video-65e0025136c513.29621131.mp4', 'Yes', '00:12:57', 'pdf-65e00251256d75.08312755.pdf'),
+(41, 51, 'Conditional expressions', 'video-65e002a326f191.42194626.mp4', 'Yes', '00:20:58', 'pdf-65e002a31034d7.62435422.pdf'),
+(42, 51, 'For Loop', 'video-65e002eea51182.91506097.mp4', 'Yes', '00:19:39', 'pdf-65e002ee92a5e7.88487976.pdf'),
+(43, 51, 'While Loop', 'video-65e0030418b1f5.64254429.mp4', 'Yes', '00:11:07', 'pdf-65e00304080e18.47280742.pdf');
 
 -- --------------------------------------------------------
 
@@ -469,42 +330,12 @@ INSERT INTO `tbl_user` (`id`, `name`, `email`, `password`) VALUES
 (25, 'nabraj', 'nabraj@gmail.com', '95e2d32fd6452835b8b7a010757af6cb'),
 (26, 'educator', 'educator@gmail.com', 'ae3a8f55b3ddd9466c9866bc2261e22e'),
 (27, 'ram', 'ram@gmail.com', '4641999a7679fcaef2df0e26d11e3c72'),
-(28, 'sohan basnet', 'sohan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
+(28, 'sohan basnet', 'sohan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(29, 'piyush', 'piyush@gmail.com', '86f500cd7b7d38e5d4ae6cde3920f589');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`);
-
---
--- Indexes for table `course`
---
-ALTER TABLE `course`
-  ADD PRIMARY KEY (`course_id`);
-
---
--- Indexes for table `courseorder`
---
-ALTER TABLE `courseorder`
-  ADD PRIMARY KEY (`co_id`),
-  ADD UNIQUE KEY `order_id` (`order_id`);
-
---
--- Indexes for table `lesson`
---
-ALTER TABLE `lesson`
-  ADD PRIMARY KEY (`lesson_id`);
-
---
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`stu_id`);
 
 --
 -- Indexes for table `tbl_admin`
@@ -533,6 +364,14 @@ ALTER TABLE `tbl_course`
   ADD KEY `fk_tbl_course_educator` (`educator_id`);
 
 --
+-- Indexes for table `tbl_courseorder`
+--
+ALTER TABLE `tbl_courseorder`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `course_id` (`course_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `tbl_educator`
 --
 ALTER TABLE `tbl_educator`
@@ -542,7 +381,9 @@ ALTER TABLE `tbl_educator`
 -- Indexes for table `tbl_enroll`
 --
 ALTER TABLE `tbl_enroll`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_enroll_course_id` (`course_id`),
+  ADD KEY `fk_enroll_user_email` (`email`);
 
 --
 -- Indexes for table `tbl_feedback`
@@ -560,65 +401,45 @@ ALTER TABLE `tbl_instructor_enroll`
 -- Indexes for table `tbl_lesson`
 --
 ALTER TABLE `tbl_lesson`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_lesson_course_id` (`course_id`);
+
+--
+-- Indexes for table `tbl_reviews`
+--
+ALTER TABLE `tbl_reviews`
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `fk_constraint_name` (`course_id`);
 
 --
 -- Indexes for table `tbl_sublesson`
 --
 ALTER TABLE `tbl_sublesson`
-  ADD PRIMARY KEY (`sublesson_id`);
+  ADD PRIMARY KEY (`sublesson_id`),
+  ADD KEY `fk_sublesson_lesson_id` (`lesson_id`);
 
 --
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `course`
---
-ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT for table `courseorder`
---
-ALTER TABLE `courseorder`
-  MODIFY `co_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `lesson`
---
-ALTER TABLE `lesson`
-  MODIFY `lesson_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
-
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `stu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
-
---
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_contact`
@@ -630,19 +451,25 @@ ALTER TABLE `tbl_contact`
 -- AUTO_INCREMENT for table `tbl_course`
 --
 ALTER TABLE `tbl_course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `tbl_courseorder`
+--
+ALTER TABLE `tbl_courseorder`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_educator`
 --
 ALTER TABLE `tbl_educator`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_enroll`
 --
 ALTER TABLE `tbl_enroll`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `tbl_feedback`
@@ -660,19 +487,25 @@ ALTER TABLE `tbl_instructor_enroll`
 -- AUTO_INCREMENT for table `tbl_lesson`
 --
 ALTER TABLE `tbl_lesson`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `tbl_reviews`
+--
+ALTER TABLE `tbl_reviews`
+  MODIFY `review_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tbl_sublesson`
 --
 ALTER TABLE `tbl_sublesson`
-  MODIFY `sublesson_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `sublesson_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
@@ -684,6 +517,32 @@ ALTER TABLE `tbl_user`
 ALTER TABLE `tbl_course`
   ADD CONSTRAINT `fk_tbl_course_educator` FOREIGN KEY (`educator_id`) REFERENCES `tbl_educator` (`id`),
   ADD CONSTRAINT `tbl_course_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `tbl_category` (`id`);
+
+--
+-- Constraints for table `tbl_courseorder`
+--
+ALTER TABLE `tbl_courseorder`
+  ADD CONSTRAINT `tbl_courseorder_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `tbl_course` (`id`),
+  ADD CONSTRAINT `tbl_courseorder_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`);
+
+--
+-- Constraints for table `tbl_enroll`
+--
+ALTER TABLE `tbl_enroll`
+  ADD CONSTRAINT `fk_enroll_course_id` FOREIGN KEY (`course_id`) REFERENCES `tbl_course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_enroll_user_email` FOREIGN KEY (`email`) REFERENCES `tbl_user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_lesson`
+--
+ALTER TABLE `tbl_lesson`
+  ADD CONSTRAINT `fk_lesson_course_id` FOREIGN KEY (`course_id`) REFERENCES `tbl_course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_sublesson`
+--
+ALTER TABLE `tbl_sublesson`
+  ADD CONSTRAINT `fk_sublesson_lesson_id` FOREIGN KEY (`lesson_id`) REFERENCES `tbl_lesson` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

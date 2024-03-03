@@ -78,7 +78,8 @@
 									<i class="fas fa-chevron-down"></i>
 								</a>
 								<ul class="sub-menu js-sub-menu">
-									<li class="sub-menu-item"><a href="logout.php">Logout </a></li>
+									<li class="sub-menu-item"><a href="mycourses.php"><i class="fa-solid fa-play"></i> My Courses </a></li>
+									<li class="sub-menu-item"><a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout </a></li>
 								</ul>
 							</li>
 						<?php } ?>

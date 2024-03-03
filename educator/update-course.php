@@ -34,6 +34,8 @@
 				$title = $row2['title'];
 				$current_category = $row2['category_id'];
                 $active = $row2['active'];
+				$price = $_POST['price'];
+				$discount = $_POST['discount'];
 
 			}
 			else
@@ -135,13 +137,13 @@
 				<tr>
 					<td>Price:</td>
 					<td>
-                    <input type="number" name="price">
+                    <input type="number" name="price" value="<?php echo $price; ?>">
 					</td>
 				</tr>
 				<tr>
 					<td>Discount:</td>
 					<td>
-                    <input type="number" name="discount">
+                    <input type="number" name="discount" value="<?php echo $discount; ?>">
 					</td>
 				</tr>
 				

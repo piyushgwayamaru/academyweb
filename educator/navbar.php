@@ -74,29 +74,23 @@ $page = $fileName;
        </a>
       </li>
       <li class="nav-item">
-       <a class="text-dark nav-link <?php if($page == 'manage-enrollment.php') {echo 'active bg-primary';} ?>" href="manage-enrollment.php">
-        <i class="fas fa-users"></i>
-        Students
-       </a>
-      </li>
-      <li class="nav-item">
        <a class="text-dark nav-link <?php if($page == 'sell-report.php') {echo 'active bg-primary';} ?>" href="sell-report.php">
         <i class="fas fa-table"></i>
         Sell Report
        </a>
       </li>
       <li class="nav-item">
-       <a class="text-dark nav-link <?php if($page == 'payment-status.php') {echo 'active bg-primary';} ?>" href="payment-status.php">
-        <i class="fas fa-table"></i>
-        Payment Status
+       <a class="text-dark nav-link <?php if($page == 'earning.php') {echo 'active bg-primary';} ?>" href="earning.php">
+       <i class="fa-solid fa-dollar-sign"></i>
+               Earnings
        </a>
       </li>
-      <li class="nav-item">
-       <a class="text-dark nav-link <?php if($page == 'feedback.php') {echo 'active bg-primary';} ?>" href="feedback.php">
+      <!-- <li class="nav-item">
+       <a class="text-dark nav-link <?php #if($page == 'feedback.php') {echo 'active bg-primary';} ?>" href="feedback.php">
         <i class="fab fa-accessible-icon"></i>
         Feedback
        </a>
-      </li>
+      </li> -->
       <li class="nav-item">
        <a class="text-dark nav-link <?php if($page == 'change-password.php') {echo 'active bg-primary';} ?>" href="change-password.php">
         <i class="fas fa-key"></i>

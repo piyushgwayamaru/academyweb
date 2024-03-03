@@ -184,6 +184,7 @@ $course_instructor = $row1['name'];
 								<li>created by - <span><a href="#"><?php echo $course_instructor;  ?></a></span></li>
 								<li>last updated - <span><?php echo $updatedAt;  ?></span></li>
 								<li>language - <span><?php echo $language; ?></span></li>
+								<li><span><a href="a_index.php?course_id=<?php echo $course_id;?>">Reviews</a></span></li>
 							</ul>
 						</div>
 						<!--course header ends-->
@@ -246,7 +247,7 @@ $course_instructor = $row1['name'];
 						<!--course sidebar start-->
 						<div class="course-sidebar box">
 							<div class="img-box position-relative h-100 w-100" data-bs-toggle="modal" data-bs-target="#video-modal">
-								<img src="img/instructor/1.png" class="img-thumbnail" alt="">
+								<img src="img/previewvideoimg.jpg" class="img-thumbnail" alt="">
 								<div class="play-icon">
 									<i class="fas fa-play"></i>
 								</div>
@@ -257,6 +258,15 @@ $course_instructor = $row1['name'];
 								<span class="price-new">Rs.<?php $price_new=($price/100*(100-$discount)); echo $price_new; ?></span>
 								<span class="price-discount"><?php echo $discount; ?> %</span>
 							</div>
+							<?php
+								$sql = "SELECT COUNT(*) AS total_lessons FROM tbl_lesson WHERE course_id = '$course_id'";
+								$result = mysqli_query($conn, $sql);
+								if ($result) {
+									$row = mysqli_fetch_assoc($result);
+									$lesson_count = $row['total_lessons'];
+								}
+
+							?>
 							<h3 class="mb-3">Course Features</h3>
 							<ul class="features-list">
 									<li>Total <?php echo $lesson_count; ?> Lessons</li>

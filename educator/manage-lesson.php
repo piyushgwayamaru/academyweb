@@ -94,7 +94,7 @@ include('navbar.php');
 								<td>
 									<a href="add-sublesson.php?id=<?php echo $id; ?>" class="btn btn-info" title="Add Sublesson"> <i class="fa-solid fa-plus fa-1x"></a></i> &nbsp; 
 
-									<a href="update-lesson.php?id=<?php echo $id; ?>" class="btn btn-secondary"><i class="fas fa-pen fa-2x"></a></i>
+									<a href="update-lesson.php?id=<?php echo $id; ?>&course_id=<?php echo $course_id; ?>" class="btn btn-secondary"><i class="fas fa-pen fa-2x"></a></i>
 							
 									<a href="delete-lesson.php?id=<?php echo $id; ?>&course_id=<?php echo $course_id; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this lesson?')"><i class="far fa-trash-alt fa-2x"></i></a>
 								</td>

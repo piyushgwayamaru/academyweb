@@ -4,7 +4,20 @@
 
 <?php include('header.php'); ?>
 
-<!-- search logic -->
+
+<!-- Course section starts -->
+<section class="course-section section-padding">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-8">
+                <div class="section-title ">
+                    <h2 class="title">
+                        Search Results:
+                    </h2>
+                </div>
+            </div>
+        </div>
+		<!-- search logic -->
 <?php
 	if(isset($_POST['search']))
 	{
@@ -21,60 +34,83 @@
 				$instructor_id=$row['educator_id'];
 				$price=$row['price'];
 				$ratings = $row['ratings'];
-				$reviews_number = $row['reviews_number'];
 ?>
+        <div class="row">
+            <div class="col-12">
+                
+                <div class="tab-content" id="nav-tabContent">
+                    
+                    <div class="tab-pane fade show <?php if($cc == 0){ echo 'active'; }?> " id="<?php echo str_replace(' ','-',$name)?>" role="tabpanel" aria-labelledby="web-development-tab">
+                        <div class="row ">
+                            
+                            <!-- Courses item starts -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="courses-item ">
+                                    <a href="course-details.php?course_id=<?php echo $id; ?>" class="link">
+                                        <div class="courses-item-inner">
+                                            <div class="img-box">
+                                                <img src="img/admin/course/<?php echo $image_name; ?>" alt="course img" style="height:175px; width:300px">
+                                            </div>
+                                            <h3 class="title"><?php echo $title;?></h3>
+                                            <div class="instructor">
+                                                <span class="instructor-name"><?php 
+                                                    $res1 = mysqli_query($conn, "SELECT name FROM tbl_educator WHERE id='$instructor_id'");
+                                                    $row1 = mysqli_fetch_assoc($res1);
+                                                    echo $row1['name']; ?> 
+                                                </span>
+                                            </div>
+                                            <div class="rating">
+                                                <span class="average-rating">(<?php echo $ratings ?>)</span>
+                                                <?php
+                                                for ($i = 1; $i <= floor($ratings); $i++) {
+                                                ?>
+                                                <span class="average-stars">
+                                                    <i class="fas fa-star"></i>
+                                                </span>
+                                                <?php
+                                                }
+                                                $rem = $i-$ratings;
+                                                if($rem==0.5){
+                                                ?>
+                                                <span class="average-stars">
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </span>
+                                                <?php
+                                                }
+                                                ?>
+                                            </div>
+											
+                                            <div class="price">Rs.<?php echo $price; ?></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Courses item ends -->
+                            <?php 
+                                }
+                            }
+							else{
+								echo "<tr><td colspan='7' class='danger'>No matching course Found<td></tr>";
+							}
+                            ?> 
+                        </div>
+                    </div>				 
+                    
+                </div>
+            </div>
+        </div>
+ 
+<!-- Course section ends -->
 
-				<div class="col-sm-9">
-					<div class="courses-item">						
-						<a href="course-details.php?course_id=<?php echo $id; ?>" class="link">
-							<div class="courses-item-inner">
-								<div class="img-box">
-									<img src="img/admin/course/<?php echo $image_name; ?>" alt="course img" style="height:175px; width:300px">
-								</div>
-								<h3 class="title"><?php echo $title;?></h3>
-								<div class="instructor">
-									<!-- <img src="img/instructor/1.png" alt="insrtucting"> -->
-									<span class="instructor-name"><?php 
-									$res1 = mysqli_query($conn, "SELECT name FROM tbl_educator WHERE id='$instructor_id'");
-									$row1 = mysqli_fetch_assoc($res1);
-
-									echo $row1['name']; ?> </span>
-								</div>
-								<div class="rating">
-									<span class="average-rating">(<?php echo $ratings ?>)</span>
-									<?php
-										for ($i = 1; $i <= floor($ratings); $i++) {
-											?>
-											<span class="average-stars">
-											<i class="fas fa-star"></i>
-											</span>
-											<?php
-										}
-										$rem = $i-$ratings;
-										if($rem==0.5){
-											?>
-											<span class="average-stars">
-											<i class="fas fa-star-half-alt"></i>
-											</span>
-											<?php
-										}
-									?>
-								</div>
-								<span clas reviews><?php echo $reviews_number; ?></span>
-								<div class="price">Rs.<?php echo $price;  ?></div>
-							</div>
-						</a>
-					</div>
-				</div>
 			
 <?php
-			}
+		
 		}
-		else{
-			echo "<tr><td colspan='7' class='danger'>No matching course Found<td></tr>";
-		}
-	}
+		
+	
 ?>
+</div>
+</section>
 
 
 
@@ -177,7 +213,6 @@ if (!isset($_POST['search'])){
 						$instructor_id=$row2['educator_id'];
 						$price=$row2['price'];
 						$ratings = $row2['ratings'];
-						$reviews_number = $row2['reviews_number'];
 				?>
 				<!--courses item starts-->
 
@@ -238,9 +273,9 @@ if (!isset($_POST['search'])){
 	</div>
 </div>
 </div>
-				<div class="row">
-					<div class="col-12 mt-3">
-						<!--pagination starts-->
+				<!-- <div class="row">
+					<div class="col-12 mt-3"> -->
+						<!-- pagination starts
 						<nav aria-label="Page navigation">
 						  <ul class="pagination justify-content-center">
 						    <li class="page-item">
@@ -260,10 +295,10 @@ if (!isset($_POST['search'])){
 						      </a>
 						    </li>
 						  </ul>
-						</nav>
+						</nav> -->
 						<!--pagination ends-->
-					</div>
-				</div>
+					<!-- </div> -->
+				<!-- </div> -->
 			</div>
 		</section>
 		<!--course section ends-->

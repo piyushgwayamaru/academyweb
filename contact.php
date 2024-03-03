@@ -53,7 +53,7 @@
 						<div class="contact-item">
 							<div class="icon-box"><i class="fas fa-envelope"></i></div>
 							<h3>Email</h3>
-							<p>shresthpiyusha@gmail.com</p>
+							<p>admin@academyweb.com</p>
 						</div>
 					</div>
 				</div>
@@ -68,10 +68,10 @@
 								<input type="text" name="email" class="form-control" placeholder="Email">
 							</div>
 							<div class="form-group">
-								<input type="text" name="phone" class="form-control" placeholder="Phone">
+								<textarea class="form-control" name="message" placeholder="Message"></textarea>
 							</div>
 							<div class="form-group">
-								<textarea class="form-control" name="message" placeholder="Message"></textarea>
+								<input type="text" name="mark_as_read" class="form-control" value="false" hidden>
 							</div>
 							<button type="submit" name="submit" class="btn btn-theme btn-block btn-form">Send Message</button>
 							<p class="text-center mt-4 mb-0">Already have an account?<a href="log-in.php"> Log In</a></p>

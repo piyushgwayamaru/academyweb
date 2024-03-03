@@ -75,15 +75,22 @@
 	if(isset($_REQUEST['course_id'])){
 		$course_id = $_REQUEST['course_id'];
 	}
+	$sql="SELECT title FROM tbl_course where id=$course_id";
+
+			$res=mysqli_query($conn,$sql);
+			$row = mysqli_fetch_assoc($res);
+			$course_name = $row['title'];
 ?>
   <!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+  <nav id="sidebarMenu" class=" d-lg-block sidebar sidebar-expang-lg bg-white">
 	  <div class="header-logo" >
 		  <a href="index.php" style = "margin-left:20px;"><span>Academy</span>Web</a>
 		  <hr>
 	  </div>
-	  <div class="position-sticky">
+	  <div >
 		  <div class="list-group list-group-flush mx-3 mt-5">
+			<h5><?php echo $course_name; ?></h5>
+			<hr>
         <?php
 			$sql2="SELECT * FROM tbl_lesson where course_id=$course_id";
 
@@ -96,6 +103,7 @@
 				{
 					$lesson_id = $row2['id'];
 					$lesson_name = $row2['lesson_name'];
+					
 					echo $lesson_name;
 					$sql3="SELECT sublesson_name, sublesson_video FROM tbl_sublesson where lesson_id=$lesson_id";
 
@@ -149,11 +157,6 @@
       videoContainer.appendChild(videoElement);
     }
 
-	const btn = document.getElementById('btn');
-
-		btn.addEventListener('click', function onClick() {
-		btn.style.backgroundColor = 'salmon';
-		btn.style.color = 'white';
-	});
+	
 
 </script>

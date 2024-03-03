@@ -49,6 +49,20 @@
 				</div>
 				<div class="row">
 
+				<?php
+function realNum($num) {
+	$num1 = floor($num);
+	$num2 = $num1+.5;
+	$num3 = $num1+1;
+	if (($num >= $num1) && ($num < $num2)) {
+		$answer = $num1;
+	} 
+	elseif (($num >= $num2) && ($num < $num3)) {
+		$answer = $num2;
+	}
+	return $answer;
+}
+				?>
 		<?php
 				$sql="SELECT * FROM tbl_course where active='yes' LIMIT 4";
 
@@ -66,16 +80,63 @@
 								$image_name=$row['image'];
 								$instructor_id=$row['educator_id'];
 								$price=$row['price'];
-								$ratings = $row['ratings'];
-								$reviews_number = $row['reviews_number'];
-
 		?>
 
+<!-- For the ratings read from review table -->
+<?php
+	$sum =0;
+	$count =0;
+    $count1 =0;
+    $count2 =0;
+    $count3 =0;
+    $count4 =0;
+    $count5 =0;
+	
+	$sql="SELECT * FROM tbl_reviews where course_id = $id";
+	if($result=mysqli_query($conn,$sql))
+	{
+		if(mysqli_num_rows($result)>0)
+		{
+			while($row=mysqli_fetch_array($result))
+			{
+				
+				$rating_data = $row['rating_data'];
+                if($rating_data == 1){
+                    $count1++;
+                }
+                if($rating_data == 2){
+                    $count2++;
+                }
+                if($rating_data == 3){
+                    $count3++;
+                }
+                if($rating_data == 4){
+                    $count4++;
+                }
+                if($rating_data == 5){
+                    $count5++;
+                }
+				$sum += $rating_data;
+				$count++;
+				
+			}
+		}
+	}
+
+	if($count !=0){
+		$real_rating = $sum/$count;
+	} else{
+		$real_rating = 0;
+	}
+	
+	// echo $real_rating;
+	$real_rating_final = realNum($real_rating);
+
+?>
 					<!--courses item starts-->
 					<div class="col-md-6 col-lg-3">
 						<div class="courses-item">
 							<a href="course-details.php?course_id=<?php echo $id; ?>" class="link"> 
-		<!-- -------------------------------------------------------------------------------------->
 								<div class="courses-item-inner">
 									<div class="img-box">
 										
@@ -104,17 +165,29 @@
 
 										echo $row1['name']; ?> </span>
 									</div>
+									
 									<div class="rating">
-										<span class="average-rating">(<?php echo $ratings ?>)</span>
-										<?php
-											for ($i = 1; $i <= floor($ratings); $i++) {
+								<span class="average-rating">(<?php echo $real_rating_final ?>)</span>		
+								<span class="average-stars">
+								<?php
+											if ($real_rating_final == 0){
+												for ($i = 1; $i <= 5; $i++) {
+													?>
+													<span class="average-stars">
+														<i class="fa-regular fa-star"></i>
+													</span>
+													<?php
+												}
+											}
+											for ($i = 1; $i <= floor($real_rating_final); $i++) {
 												?>
 												<span class="average-stars">
 												<i class="fas fa-star"></i>
+
 												</span>
 												<?php
 											}
-											$rem = $i-$ratings;
+											$rem = $i-$real_rating_final;
 											if($rem==0.5){
 												?>
 												<span class="average-stars">
@@ -122,12 +195,11 @@
 												</span>
 												<?php
 											}
-											
-										    	
-											// <!--  -->
 										?>
-									</div>
-										<span clas reviews><?php echo $reviews_number; ?></span>
+								</span>
+								
+							</div>
+							<span clas reviews><?php #echo $reviews_number; ?></span>
 									<div class="price">Rs.<?php echo $price;  ?></div>
 								</div>
 							</a>
@@ -159,73 +231,7 @@
 
 
 		<!--testimonials section starts-->
-		<section class="testimonials-section section-padding position-relative">
-			<div class="decoration-circles">
-				<div class="decoration-circles-item"></div>
-				<div class="decoration-circles-item"></div>
-				<div class="decoration-circles-item"></div>
-				<div class="decoration-circles-item"></div>
-			</div>
-			<div class="decoration-imgs">
-				<img src="img/testimonial/1.png" alt="decoration-img" class="decoration-imgs-item">
-				<img src="img/testimonial/2.png" alt="decoration-img" class="decoration-imgs-item">
-				<img src="img/testimonial/3.png" alt="decoration-img" class="decoration-imgs-item">
-			</div>
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-8 ">
-						<div class="section-title text-center"> 
-							<h2 class="title">students feedback</h2>
-							<p class="sub-title">What our students says</p>
-						</div>
-					</div>
-				</div>
-				<div class="row justify-content-center">
-					<div class="col-md-8 col-lg-6">
-						<div class="img-box rounded-circle position-relative">
-							<img src="img/testimonial/1.png" class="w-100 js-testimonial-img rounded-circle" alt="testimonial img">
-						</div>
-						<!--carousel-->
-						<div id="carouselOne" class="carousel slide text-center" data-bs-ride="carousel">
-						  <div class="carousel-inner mb-4
-						  ">
-						    <div class="carousel-item active" data-js-testimonial-img="img/testimonial/1.png">
-						    	<div class="testimonials-item ">
-						    		<p class="text-1">AcademyWeb has transformed my learning experience. The courses are engaging, and the flexible online format fits perfectly with my schedule. I'm gaining valuable skills and knowledge that are directly applicable to my career.</p>
-						    		<h3>Emily Thompson</h3>
-						    		<p class="text-2">web developer</p>
-						    	</div>
-						    </div>
-						    <div class="carousel-item" data-js-testimonial-img="img/testimonial/2.png">
-						    	<div class="testimonials-item">
-						    		<p class="text-1">I am impressed with the quality of instructors at AcademyWeb. The content is well-structured, and the interactive nature of the courses keeps me motivated. It's a fantastic platform for anyone looking to enhance their skills.</p>
-						    		<h3>Alex Rodriguez</h3>
-						    		<p class="text-2">Game developer</p>
-						    	</div>
-						    </div>
-						    <div class="carousel-item" data-js-testimonial-img="img/testimonial/3.png">
-						    	<div class="testimonials-item">
-						    		<p class="text-1">The support from AcademyWeb's community and instructors is outstanding. I feel like I'm part of a learning community where everyone is committed to success. The practical insights gained from the courses have been invaluable in my career.</p>
-						    		<h3>Sarah Johnson</h3>
-						    		<p class="text-2">Data scientis</p>
-						    	</div>
-						    </div>
-						  </div>
-						  <button class="carousel-control-prev" type="button" data-bs-target="#carouselOne" data-bs-slide="prev">
-						    <i class="fas fa-arrow-left"></i>
-						    <span class="visually-hidden">Previous</span>
-						  </button>
-						  <button class="carousel-control-next" type="button" data-bs-target="#carouselOne" data-bs-slide="next">
-						    <i class="fas fa-arrow-right"></i>
-						    <span class="visually-hidden">Next</span>
-						  </button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--testimonials section ends-->
-
+		
 		<!--become an instructor section starts-->
 		<section class="bai-section section-padding">
 			<div class="container">

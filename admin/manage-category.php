@@ -1,6 +1,8 @@
 <?php
 include('header.php'); 
+include('navbar.php'); 
 ?>
+ <div class="col-sm-9" style="margin-top: 30px; margin-left:230px;">
 
 <div class="main-content">
 	<div class="wrapper">
@@ -121,4 +123,5 @@ include('header.php');
 			
 			</table>
 	</div>
+</div>
 </div>

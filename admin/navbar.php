@@ -56,47 +56,25 @@ $page = $fileName;
       <nav class="navline position-fixed col-sm-3 col-md-2 sidebar d-print-none min-vh-100">
     <div class="text-dark">
      <ul class="nav flex-column">
-      <li class="nav-item ">
-       <a class="text-dark nav-link <?php if($page == 'index.php') {echo 'active bg-primary';} ?>" href="index.php">
-        <i class="fas fa-tachometer-alt"></i>
-        Dashboard
-       </a>
-      </li>
+      
       <li class="nav-item">
        <a class="text-dark nav-link <?php 
           if ($page == 'manage-category.php') { echo 'active bg-primary';}?>" href="manage-category.php">
-        <i class="fab fa-accessible-icon"></i>
+        <i class="fa-solid fa-list"></i>
         Category
        </a>
       </li>
       <li class="nav-item">
        <a class="text-dark nav-link <?php 
           if ($page == 'manage-course.php') { echo 'active bg-primary';}?>" href="manage-courses.php">
-        <i class="fab fa-accessible-icon"></i>
+        <i class="fa-solid fa-play"></i>
         Courses
        </a>
       </li>
+    
       <li class="nav-item">
-       <a class="text-dark nav-link <?php if($page == 'manage-enrollment.php') {echo 'active bg-primary';} ?>" href="manage-educators.php">
-        <i class="fas fa-users"></i>
-        Educators
-       </a>
-      </li>
-      <li class="nav-item">
-       <a class="text-dark nav-link <?php if($page == 'sell-report.php') {echo 'active bg-primary';} ?>" href="manage-students.php">
-        <i class="fas fa-table"></i>
-        Students
-       </a>
-      </li>
-      <li class="nav-item">
-       <a class="text-dark nav-link <?php if($page == 'payment-status.php') {echo 'active bg-primary';} ?>" href="sales.php">
-        <i class="fas fa-table"></i>
-        sales
-       </a>
-      </li>
-      <li class="nav-item">
-       <a class="text-dark nav-link <?php if($page == 'feedback.php') {echo 'active bg-primary';} ?>" href="contact.php">
-        <i class="fab fa-accessible-icon"></i>
+       <a class="text-dark nav-link <?php if($page == 'contact.php') {echo 'active bg-primary';} ?>" href="contact.php">
+       <i class="fa-solid fa-phone"></i>
         Contact
        </a>
       </li>

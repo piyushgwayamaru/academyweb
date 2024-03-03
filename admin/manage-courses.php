@@ -116,10 +116,11 @@ include('navbar.php');
 								
 								<td>
 									<?php 
-									if ($active == "Yes"){
-										echo "<a href='block-course.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>' title='block course class='btn btn-danger' onclick='return confirm('Are you sure you want to block this course?')'><i class='fa-solid fa-ban'></i></a>";
+									if ($active == 'Yes'){
+										echo "<a href='block-course.php?id= $id; ?>' title='block course' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to block this course?')\"><i class='fa-solid fa-ban'></i></a>";
+
 									}else{
-										echo "<a href='unblock-course.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>' title='unblock course'class='btn btn-danger' onclick='return confirm('Are you sure you want to unblock this course?')'><i class='fa-solid fa-circle-check'></i></a>";
+										echo "<a href='unblock-course.php?id=$id' title='unblock course' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to unblock this course?')\"><i class='fa-solid fa-circle-check'></i></a>";
 									}
 									?>
 								</td>
