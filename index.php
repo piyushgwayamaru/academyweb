@@ -49,20 +49,20 @@
 				</div>
 				<div class="row">
 
-				<?php
-function realNum($num) {
-	$num1 = floor($num);
-	$num2 = $num1+.5;
-	$num3 = $num1+1;
-	if (($num >= $num1) && ($num < $num2)) {
-		$answer = $num1;
-	} 
-	elseif (($num >= $num2) && ($num < $num3)) {
-		$answer = $num2;
-	}
-	return $answer;
-}
-				?>
+			<?php
+			function realNum($num) {
+				$num1 = floor($num);
+				$num2 = $num1+.5;
+				$num3 = $num1+1;
+				if (($num >= $num1) && ($num < $num2)) {
+					$answer = $num1;
+				} 
+				elseif (($num >= $num2) && ($num < $num3)) {
+					$answer = $num2;
+				}
+				return $answer;
+			}
+			?>
 		<?php
 				$sql="SELECT * FROM tbl_course where active='yes' LIMIT 4";
 

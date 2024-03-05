@@ -3,10 +3,6 @@
 <?php 
 $lesson_count=0;
 
-if(!isset($_SESSION['SESSION_EMAIL']) && empty($_SESSION['SESSION_EMAIL']))
-{
-	header("location:".'log-in.php');
-}
 											
 ?>
 

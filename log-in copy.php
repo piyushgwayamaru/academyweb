@@ -1,15 +1,5 @@
 <?php include('header.php'); ?>
 
-<?php
-
-if (isset($_GET['price_new'])) {
-	$price_new = $_GET['price_new'];
-}
-if (isset($_GET['course_id'])) 
-{
-    $course_id = $_GET['course_id'];
-}
-?>
 	<!--breadcrumb starts-->
 			<div class="breadcrumb-nav">
 				<div class="container">
@@ -25,31 +15,30 @@ if (isset($_GET['course_id']))
 
 
 		<?php 
-		
-		
+
+			
 
 		$msg="";
-		if(isset($_GET['verification']))
-		{
-			if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tbl_user WHERE code = '{$_GET['verification']}'")) > 0)
-			{
-				$query = mysqli_query($conn, "UPDATE tbl_user SET code='' WHERE code='{$_GET['verification']}'");
-
-				if($query)
+				if(isset($_GET['verification']))
 				{
-					$msg = "<div class='alert alert-success'>Account Verification Has Been Successful.</div>";
-					echo $msg;
+					if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tbl_user WHERE code = '{$_GET['verification']}'")) > 0)
+					{
+						$query = mysqli_query($conn, "UPDATE tbl_user SET code='' WHERE code='{$_GET['verification']}'");
+
+						if($query)
+						{
+							$msg = "<div class='alert alert-success'>Account Verification Has Been Successful.</div>";
+							echo $msg;
+						}
+					}
+					else
+					{
+						//header("Location: index.php");
+					}
 				}
-			}
-			else
-			{
-				//header("Location: index.php");
-			}
-		}	 
 
 				if(isset($_POST['submit']))
 				{
-					
 					$email = mysqli_real_escape_string($conn, $_POST['email']);
 					$password = mysqli_real_escape_string($conn, md5($_POST['password']));
 					
@@ -59,29 +48,20 @@ if (isset($_GET['course_id']))
 					if(mysqli_num_rows($result) == 1)
 					{
 						$row = mysqli_fetch_assoc($result);
-						
-						if(empty($row['code'])){
-							if(isset($course_id))
+
+						if(empty($row['code']))
 						{
 							$_SESSION['SESSION_EMAIL'] = $email;
-							$url = 'enroll.php?course_id=' . $course_id . '&price_new=' . $price_new;
-
-							header('Location:' . $url);
-						
+							
+							header('location:'.'index.php');
 						}
-						else{
-							$_SESSION['SESSION_EMAIL'] = $email;
-
-							header('Location:index.php');
-						
-						}
-					}
 
 						else 
 						{
 							$msg= "<div class='alert alert-info'>First Verify Your Account and Try Again. </div>";
 							echo $msg;
 						}
+						
 					}
 					else
 						{

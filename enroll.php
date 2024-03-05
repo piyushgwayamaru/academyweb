@@ -1,6 +1,17 @@
 <?php include('header.php'); ?>
 
 <?php
+$course_id = $_GET['course_id'];
+$price_new = $_GET['price_new'];
+if(!isset($_SESSION['SESSION_EMAIL']) && empty($_SESSION['SESSION_EMAIL']))
+{
+	header('location:log-in.php?course_id=' .$course_id. '&price_new=' .$price_new);
+}
+?>
+<?php
+if(isset($_SESSION['SESSION_EMAIL']))
+{
+
     $course_id =  $_GET['course_id'];
     $query = mysqli_query($conn, "SELECT * FROM tbl_enroll WHERE email = '{$_SESSION['SESSION_EMAIL']}' && course_id = $course_id");
     if(mysqli_num_rows($query) > 0) {
@@ -190,3 +201,4 @@
 
 <?php include('footer.php'); ?>
 <?php ob_flush();?>
+<?php } ?>
