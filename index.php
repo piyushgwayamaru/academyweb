@@ -167,38 +167,38 @@
 									</div>
 									
 									<div class="rating">
-								<span class="average-rating">(<?php echo $real_rating_final ?>)</span>		
-								<span class="average-stars">
-								<?php
-											if ($real_rating_final == 0){
-												for ($i = 1; $i <= 5; $i++) {
-													?>
-													<span class="average-stars">
-														<i class="fa-regular fa-star"></i>
-													</span>
-													<?php
-												}
-											}
-											for ($i = 1; $i <= floor($real_rating_final); $i++) {
-												?>
-												<span class="average-stars">
-												<i class="fas fa-star"></i>
+										<span class="average-rating">(<?php echo $real_rating_final ?>)</span>		
+										<span class="average-stars">
+										<?php
+													if ($real_rating_final == 0){
+														for ($i = 1; $i <= 5; $i++) {
+															?>
+															<span class="average-stars">
+																<i class="fa-regular fa-star"></i>
+															</span>
+															<?php
+														}
+													}
+													for ($i = 1; $i <= floor($real_rating_final); $i++) {
+														?>
+														<span class="average-stars">
+														<i class="fas fa-star"></i>
 
-												</span>
-												<?php
-											}
-											$rem = $i-$real_rating_final;
-											if($rem==0.5){
+														</span>
+														<?php
+													}
+													$rem = $i-$real_rating_final;
+													if($rem==0.5){
+														?>
+														<span class="average-stars">
+														<i class="fas fa-star-half-alt"></i>
+														</span>
+														<?php
+													}
 												?>
-												<span class="average-stars">
-												<i class="fas fa-star-half-alt"></i>
-												</span>
-												<?php
-											}
-										?>
-								</span>
+										</span>
 								
-							</div>
+									</div>
 							<span clas reviews><?php #echo $reviews_number; ?></span>
 									<div class="price">Rs.<?php echo $price;  ?></div>
 								</div>

@@ -1,7 +1,3 @@
-
-
-
-
 <?php include('header.php'); 
 
 if (isset($_SESSION['SESSION_EMAIL'])){
@@ -21,6 +17,21 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 		</div>
 	</div>
 	<!--breadcrumb ends-->
+
+	<?php
+			function realNum($num) {
+				$num1 = floor($num);
+				$num2 = $num1+.5;
+				$num3 = $num1+1;
+				if (($num >= $num1) && ($num < $num2)) {
+					$answer = $num1;
+				} 
+				elseif (($num >= $num2) && ($num < $num3)) {
+					$answer = $num2;
+				}
+				return $answer;
+			}
+			?>
 
 	<!--course section starts-->
 	<section class="course-section section-padding">
@@ -51,8 +62,58 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 						$image_name=$row2['image'];
 						$instructor_id=$row2['educator_id'];
 						$price=$row2['price'];
-						$ratings = $row2['ratings'];
 				?>
+				<!-- For the ratings read from review table -->
+<?php
+	$sum =0;
+	$count =0;
+    $count1 =0;
+    $count2 =0;
+    $count3 =0;
+    $count4 =0;
+    $count5 =0;
+	
+	$sql="SELECT * FROM tbl_reviews where course_id = $id";
+	if($result=mysqli_query($conn,$sql))
+	{
+		if(mysqli_num_rows($result)>0)
+		{
+			while($row=mysqli_fetch_array($result))
+			{
+				
+				$rating_data = $row['rating_data'];
+                if($rating_data == 1){
+                    $count1++;
+                }
+                if($rating_data == 2){
+                    $count2++;
+                }
+                if($rating_data == 3){
+                    $count3++;
+                }
+                if($rating_data == 4){
+                    $count4++;
+                }
+                if($rating_data == 5){
+                    $count5++;
+                }
+				$sum += $rating_data;
+				$count++;
+				
+			}
+		}
+	}
+
+	if($count !=0){
+		$real_rating = $sum/$count;
+	} else{
+		$real_rating = 0;
+	}
+	
+	// echo $real_rating;
+	$real_rating_final = realNum($real_rating);
+
+?>
 				<!--courses item starts-->
 
 				<div class="col-md-6 col-lg-3">
@@ -71,21 +132,35 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 									echo $row1['name']; ?> </span>
 								</div>
 								<div class="rating">
-									<span class="average-rating">(<?php echo $ratings ?>)</span>
-									<?php
-									for ($i = 1; $i <= floor($ratings); $i++) {
-									?>
-									<span class="average-stars">
-										<i class="fas fa-star"></i>
-									</span>
-									<?php
-									}
-									$rem = $i-$ratings;
-									if($rem==0.5){
-									?>
-									<span class="average-stars">
-										<i class="fas fa-star-half-alt"></i>
-									</span>
+									<span class="average-rating">(<?php echo $real_rating_final ?>)</span>		
+										<span class="average-stars">
+										<?php
+													if ($real_rating_final == 0){
+														for ($i = 1; $i <= 5; $i++) {
+															?>
+															<span class="average-stars">
+																<i class="fa-regular fa-star"></i>
+															</span>
+															<?php
+														}
+													}
+													for ($i = 1; $i <= floor($real_rating_final); $i++) {
+														?>
+														<span class="average-stars">
+														<i class="fas fa-star"></i>
+
+														</span>
+														<?php
+													}
+													$rem = $i-$real_rating_final;
+													if($rem==0.5){
+														?>
+														<span class="average-stars">
+														<i class="fas fa-star-half-alt"></i>
+														</span>
+														<?php
+													}
+												?>
 									<?php
 									}
 									?>
@@ -99,7 +174,7 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 							<!--courses item ends-->
 				<?php 
 					}
-				}
+				
 				?> 
 			</div>
 		</div>				 
