@@ -266,7 +266,7 @@ $course_instructor = $row1['name'];
 							<h3 class="mb-3">Course Features</h3>
 							<ul class="features-list">
 									<li>Total <?php echo $lesson_count; ?> Lessons</li>
-									<li>Notes Available</li>
+									<!-- <li>Notes Available</li> -->
 									
 								</ul>
 								<div class="btn-wrap">
