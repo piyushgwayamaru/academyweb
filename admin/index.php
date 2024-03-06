@@ -25,6 +25,11 @@ $sql = "SELECT * FROM tbl_user ";
 $result = $conn->query($sql);
 $totalStudents = $result->num_rows;
 
+$sql = "SELECT * FROM tbl_enroll ";
+$result = $conn->query($sql);
+$coursesSold = $result->num_rows;
+
+
 $sql = "SELECT tbl_enroll.id, tbl_course.price
 FROM tbl_enroll 
 INNER JOIN tbl_course ON tbl_enroll.course_id = tbl_course.id";
@@ -76,6 +81,17 @@ while ($row = $result->fetch_assoc()) {
               <?php echo $totalStudents; ?>
             </h4>
             <a class="btn text-white" href="manage-students.php">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4  ">
+        <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+          <div class="card-header">Courses sold</div>
+          <div class="card-body">
+            <h4 class="card-title">
+              <?php echo $coursesSold; ?>
+            </h4>
+            <a class="btn text-white" href="earnings.php">View</a>
           </div>
         </div>
       </div>
