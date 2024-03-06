@@ -57,6 +57,7 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 					<th>Name</th>
 					<th>Email</th>
                     <th>Course</th>
+                    <th>Date</th>
 					<!-- <th>Active</th> -->
 					<!-- <th>Actions</th> -->
 				</tr>
@@ -64,7 +65,7 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 				<?php  
 
 					//qury to get all categiry from db
-					$sql = "SELECT tbl_enroll.name, tbl_enroll.email, tbl_course.title FROM tbl_enroll 
+					$sql = "SELECT tbl_enroll.name, tbl_enroll.email, tbl_enroll.order_date, tbl_course.title FROM tbl_enroll 
                             JOIN tbl_course ON tbl_enroll.course_id = tbl_course.id
                             JOIN tbl_educator ON tbl_course.educator_id = tbl_educator.id
                             WHERE tbl_educator.email = '$educatorEmail' ";
@@ -89,6 +90,7 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 							$name = $row['name'];
 							$email = $row['email'];
                             $courseName = $row['title'];
+                            $date = $row['order_date'];
 							// $active = $row['active'];
 							?>
 
@@ -97,6 +99,7 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 							<td><?php echo $name; ?></td>
 							<td><?php echo $email; ?></td>
                             <td><?php echo $courseName ?></td>
+                            <td><?php echo $date ?></td>
 							<td><?php #echo $active; ?>
 							<!-- <td>
 								<a href="update-category.php?id=<?php #echo $id; ?>" class="btn-secondary">Update Category</a> 
