@@ -130,10 +130,17 @@ include('navbar.php');
 										<option value="<?php echo ($active == 'No') ? 'No' : 'Yes'; ?>"><?php echo $status; ?></option>
 										<option value="<?php echo ($active == 'No') ? 'Yes' : 'No'; ?>"><?php echo $anotherStatus; ?></option>
 									</select>
-									<button name="submit" type="submit" style="display:none;">Save</button>
+									<button name="submit" type="submit" style="display:none;" class="btn btn-primary rounded mt-2">Save</button>
 								</form>
 							</td>
-								
+							<td>
+									<a href="add-lesson.php?id=<?php echo $id; ?>" class="btn btn-info" title="Add lessons"> <i class="fa-solid fa-plus fa-1x"></a></i> &nbsp; 
+									<a href="update-course.php?id=<?php echo $id; ?>" class="btn btn-secondary" title="Update course"><i class="fa-solid fa-pen fa-2x"></a></i> &nbsp;&nbsp; 
+									<a href="delete-course.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this lesson?')"><i class="far fa-trash-alt fa-2x"></i></a>
+
+
+									
+								</td>
 								
 								
 							</tr>
