@@ -47,6 +47,11 @@ $page = $fileName;
 
  <!-- Custom CSS -->
  <link rel="stylesheet" href="../css/admin.css">
+ <style>
+  .nav-item:hover{
+    background-color: rgba(0, 123, 255, 0.8);
+  }
+ </style>
 
 </head>
 

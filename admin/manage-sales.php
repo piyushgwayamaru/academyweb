@@ -68,8 +68,7 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 					//qury to get all categiry from db
 					$sql = "SELECT tbl_enroll.name, tbl_enroll.email, tbl_enroll.order_date, tbl_course.title, tbl_course.price FROM tbl_enroll 
                             JOIN tbl_course ON tbl_enroll.course_id = tbl_course.id
-                            JOIN tbl_educator ON tbl_course.educator_id = tbl_educator.id
-                            WHERE tbl_educator.email = '$educatorEmail' ";
+                            JOIN tbl_educator ON tbl_course.educator_id = tbl_educator.id ";
 
 					//execute the query
 					$res =  mysqli_query($conn,$sql);
