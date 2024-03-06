@@ -56,7 +56,7 @@ include('navbar.php');
 						<th>S.N.</th>
 						<th>Title</th>
 						<th>Image</th>
-						<th>Active</th>
+						<th>Status</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -88,6 +88,14 @@ include('navbar.php');
 							$title = $row['title'];
 							$image_name = $row['image'];
 							$active = $row['active'];
+							if ($active == "No"){
+								$status = "Pending";
+								$anotherStatus = "Approved";
+							}
+							else{
+								$status = "Approved";
+								$anotherStatus = "Pending";
+							}
 							?>
 
 							<tr>
@@ -111,19 +119,23 @@ include('navbar.php');
 								}
 								?>
 							</td>
-							<td><?php echo $active; ?></td>
+							<td>
+								<?php
+								// Increment the form and select IDs
+								
+								?>
+								<form id="form_<?php echo $id; ?>" action="" method="POST">
+									<input type="hidden" name="course_id" value="<?php echo $id; ?>">
+									<select name="status" id="select_<?php echo $id; ?>" onchange="checkStatusChange('form_<?php echo $id; ?>')">
+										<option value="<?php echo ($active == 'No') ? 'No' : 'Yes'; ?>"><?php echo $status; ?></option>
+										<option value="<?php echo ($active == 'No') ? 'Yes' : 'No'; ?>"><?php echo $anotherStatus; ?></option>
+									</select>
+									<button name="submit" type="submit" style="display:none;">Save</button>
+								</form>
+							</td>
 								
 								
-								<td>
-									<?php 
-									if ($active == 'Yes'){
-										echo "<a href='block-course.php?id= $id; ?>' title='block course' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to block this course?')\"><i class='fa-solid fa-ban'></i></a>";
-
-									}else{
-										echo "<a href='unblock-course.php?id=$id' title='unblock course' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to unblock this course?')\"><i class='fa-solid fa-circle-check'></i></a>";
-									}
-									?>
-								</td>
+								
 							</tr>
 
 							<?php
@@ -166,17 +178,7 @@ include('navbar.php');
 								}
 								?>
 							</td>
-							<td><?php echo $active; ?></td>
-								
-								<td>
-									<?php 
-									if ($active == "Yes"){
-										echo "<a href='block-course.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>' title='block course class='btn btn-danger' onclick='return confirm('Are you sure you want to block this course?')'><i class='fa-solid fa-ban'></i></a>";
-									}else{
-										echo "<a href='unblock-course.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>' title='unblock course'class='btn btn-danger' onclick='return confirm('Are you sure you want to unblock this course?')'><i class='fa-solid fa-circle-check'></i></a>";
-									}
-									?>
-								</td>
+							
 							</tr>
 						<?php
 						
@@ -199,9 +201,48 @@ include('navbar.php');
 	</div>
 </div>
 
+<!-- Status Change logic -->
+<?php
 
+    if (isset($_POST['status'])) {
+        $selectedStatus = $_POST['status'];
+		echo $selectedStatus;
+		$course_id = $_POST['course_id'];
+	
 
+		$sql = "Update tbl_course set active='$selectedStatus' where id='$course_id'";
+		$res = mysqli_query($conn,$sql);
+		if ($res==true){
+			$_SESSION['update'] = "<div class='success'>Status updated successfully.</div>";
+			header('location:'.'manage-courses.php');	
+		}
+		else{
+			$_SESSION['update'] = "<div class='danger'>Status updated successfully.</div>";
+			header('location:'.'manage-courses.php');	
+		}
 
+		
+    }
+
+?>
+
+<script>
+    // Function to check if status has changed
+    function checkStatusChange(formID) {
+        var form = document.getElementById(formID);
+        var select = form.querySelector('select[name="status"]');
+        var submitButton = form.querySelector('button[name="submit"]');
+
+        var currentValue = select.value;
+        var originalValue = select.getAttribute('data-original');
+
+        if (currentValue !== originalValue) {
+            submitButton.style.display = 'block'; // Show the button if value changed
+        } else {
+            submitButton.style.display = 'none'; // Hide the button if value not changed
+        }
+    }
+</script>
 
 
 

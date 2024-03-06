@@ -52,7 +52,7 @@ include('navbar.php');
 						<th>S.N.</th>
 						<th>Title</th>
 						<th>Image</th>
-						<th>Active</th>
+						<th>Status</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -105,7 +105,15 @@ include('navbar.php');
 								}
 								?>
 							</td>
-							<td><?php echo $active; ?></td>
+							<td><?php 
+									if ($active == "No"){
+										echo "Pending";
+									}
+									else{
+										echo "Approved";
+									}
+								?>
+							</td>
 								
 								<td>
 									<a href="add-lesson.php?id=<?php echo $id; ?>" class="btn btn-info" title="Add lessons"> <i class="fa-solid fa-plus fa-1x"></a></i> &nbsp; 
