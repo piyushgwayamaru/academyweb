@@ -83,8 +83,20 @@
 		margin-top:-30px;
 		width: 1080px;
 		height: 650px;
-
 	}
+	/* .watch-video-section {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        } */
+
+        @media (max-width: 767px) {
+            .watch-video-section {
+                padding: 15px;
+            }
+		}
 </style>
 
 <body>
@@ -139,7 +151,13 @@
 
     <!--Main layout-->
     <main style="margin-top: 58px;">
-        <div class="container pt-4" id="videoContainer"></div>
+        <div class="container pt-4">
+            <!-- Watch Video Section -->
+            <div id="videoContainer" class="watch-video-section">
+                <!-- Video content will be displayed here -->
+            </div>
+            <!-- End of Watch Video Section -->
+        </div>
     </main>
     <!--Main layout-->
 

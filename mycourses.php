@@ -115,10 +115,10 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 ?>
 				<!--courses item starts-->
 
-				<div class="col-md-6 col-lg-3">
+				<div class="">
 					<div class="courses-item">
 						<a href="watch.php?course_id=<?php echo $id; ?>" class="link">
-							<div class="courses-item-inner">
+							<div class="m-inner">
 								<div class="img-box">
 									<img src="img/admin/course/<?php echo $image_name; ?>" alt="course img" style="height:175px; width:300px;">
 								</div>
@@ -132,43 +132,43 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 								</div>
 								<div class="rating">
 									<span class="average-rating">(<?php echo $real_rating_final ?>)</span>		
-										<span class="average-stars">
+									<span class="average-stars">
 										<?php
-													if ($real_rating_final == 0){
-														for ($i = 1; $i <= 5; $i++) {
-															?>
-															<span class="average-stars">
-																<i class="fa-regular fa-star"></i>
-															</span>
-															<?php
-														}
-													}
-													for ($i = 1; $i <= floor($real_rating_final); $i++) {
-														?>
-														<span class="average-stars">
-														<i class="fas fa-star"></i>
-
-														</span>
-														<?php
-													}
-													$rem = $i-$real_rating_final;
-													if($rem==0.5){
-														?>
-														<span class="average-stars">
-														<i class="fas fa-star-half-alt"></i>
-														</span>
-														<?php
-													}
+											if ($real_rating_final == 0){
+												for ($i = 1; $i <= 5; $i++) {
+													?>
+													<span class="average-stars">
+														<i class="fa-regular fa-star"></i>
+													</span>
+													<?php
+												}
+											}
+											for ($i = 1; $i <= floor($real_rating_final); $i++) {
 												?>
+												<span class="average-stars">
+												<i class="fas fa-star"></i>
+
+												</span>
+												<?php
+											}
+											$rem = $i-$real_rating_final;
+											if($rem==0.5){
+												?>
+												<span class="average-stars">
+												<i class="fas fa-star-half-alt"></i>
+												</span>
+												<?php
+											}
+										?>
+									</span>
 									<?php
 									}
 									?>
-									</div>
-												
-											</div>
-										</a>
-									</div>
 								</div>
+							</div>
+						</a>
+					</div>
+				</div>
 
 							<!--courses item ends-->
 				<?php 
