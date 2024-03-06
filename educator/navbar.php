@@ -69,20 +69,20 @@ $page = $fileName;
           }
           ?>
           " href="manage-courses.php">
-        <i class="fab fa-accessible-icon"></i>
+          <i class="fa-solid fa-play"></i>
         Courses
        </a>
       </li>
       <li class="nav-item">
-       <a class="text-dark nav-link <?php if($page == 'sell-report.php') {echo 'active bg-primary';} ?>" href="sell-report.php">
+       <a class="text-dark nav-link <?php if($page == 'students.php') {echo 'active bg-primary';} ?>" href="students.php">
         <i class="fas fa-table"></i>
-        Sell Report
+        Students
        </a>
       </li>
       <li class="nav-item">
        <a class="text-dark nav-link <?php if($page == 'earning.php') {echo 'active bg-primary';} ?>" href="earning.php">
        <i class="fa-solid fa-dollar-sign"></i>
-               Earnings
+          Earnings
        </a>
       </li>
       <!-- <li class="nav-item">
