@@ -33,7 +33,7 @@
 				$current_image = $row2['image'];
 				$title = $row2['title'];
 				$current_category = $row2['category_id'];
-                $active = $row2['active'];
+                
 				$price = $_POST['price'];
 				$discount = $_POST['discount'];
 
@@ -126,13 +126,7 @@
 					</td>
 				</tr>
 				
-                <tr>
-					<td>Active:</td>
-					<td>
-						<input <?php if ($active == "Yes") {echo "checked";} ?> type="radio" name="active" value="Yes">Yes
-						<input <?php if ($active == "No") {echo "checked";} ?> type="radio" name="active" value="No">No
-					</td>
-				</tr>
+                
 
 				<tr>
 					<td>Price:</td>
@@ -165,7 +159,7 @@
 			$title = $_POST['title'];
 			$current_image = $_POST['current_image'];
             $category = $_POST['category'];
-            $active = $_POST['active'];
+            
 			$price = $_POST['price'];
             $discount = $_POST['discount'];
 
@@ -252,7 +246,6 @@
                 category_id = '$category',
 				title = '$title',
 				image = '$image_name',
-                active = '$active',
 				price = '$price',
                 discount = '$discount'
 
