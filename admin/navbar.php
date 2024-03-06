@@ -2,6 +2,9 @@
 ob_start(); // Start output buffering
 ?>
 <?php
+$page = "index.php";
+?>
+<?php
 // Get the protocol
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
 
@@ -56,7 +59,13 @@ $page = $fileName;
       <nav class="navline position-fixed col-sm-3 col-md-2 sidebar d-print-none min-vh-100">
     <div class="text-dark">
      <ul class="nav flex-column">
-      
+     <li class="nav-item">
+       <a class="text-dark nav-link <?php 
+          if ($page == 'index.php') { echo 'active bg-primary';}?>" href="index.php">
+        <i class="fa-solid fa-list"></i>
+        Dashboard
+       </a>
+      </li>
       <li class="nav-item">
        <a class="text-dark nav-link <?php 
           if ($page == 'manage-category.php') { echo 'active bg-primary';}?>" href="manage-category.php">
@@ -66,7 +75,7 @@ $page = $fileName;
       </li>
       <li class="nav-item">
        <a class="text-dark nav-link <?php 
-          if ($page == 'manage-course.php') { echo 'active bg-primary';}?>" href="manage-courses.php">
+          if ($page == 'manage-courses.php') { echo 'active bg-primary';}?>" href="manage-courses.php">
         <i class="fa-solid fa-play"></i>
         Courses
        </a>
@@ -85,7 +94,7 @@ $page = $fileName;
        </a>
       </li>
       <li class="nav-item">
-       <a class="text-dark nav-link" href="../logout.php">
+       <a class="text-dark nav-link" href="logout.php">
         <i class="fas fa-sign-out-alt"></i>
         Logout
        </a>

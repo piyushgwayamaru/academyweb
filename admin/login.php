@@ -29,9 +29,9 @@
 			<br><br>
 
 			<form action="" method="POST" class="text-center">
-				Username:<br><input type="text" name="username" placeholder="Enter Username">
+				Username:<br><input type="text" name="username" placeholder="Enter Username" required>
 				<br><br>
-				Password:<br><input type="password" name="password" placeholder="Enter Password">
+				Password:<br><input type="password" name="password" placeholder="Enter Password" required>
 				<br><br>
 				<input type="submit" name="submit" value="login" class="btn-primary">
 				<br><br>
