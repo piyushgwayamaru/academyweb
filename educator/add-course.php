@@ -109,13 +109,7 @@
                     <input type="textarea" name="description" required>
 					</td>
 				</tr>	
-				<tr>
-					<td>Active:</td>
-					<td>
-						<input type="radio" name="active" value="Yes">Yes
-						<input type="radio" name="active" value="No">No
-					</td>
-				</tr>
+				
 			
 				
 				<tr>
@@ -222,14 +216,9 @@
 
 
 
-				if(isset($_POST['active']))
-				{
-					$active = $_POST['active'];
-				}
-				else
-				{
-					$active = "No";//setting the default value
-				}
+				
+				$active = "No";//setting the default value
+				
 
 				$email = $_SESSION['SESSION_EMAIL'];
 				$sqlname = "SELECT id FROM tbl_educator WHERE email='$email'";

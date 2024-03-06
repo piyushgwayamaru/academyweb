@@ -62,7 +62,7 @@ $page = $fileName;
      <li class="nav-item">
        <a class="text-dark nav-link <?php 
           if ($page == 'index.php') { echo 'active bg-primary';}?>" href="index.php">
-        <i class="fa-solid fa-list"></i>
+        <i class="fas fa-tachometer-alt"></i>
         Dashboard
        </a>
       </li>
@@ -80,7 +80,20 @@ $page = $fileName;
         Courses
        </a>
       </li>
-    
+      <li class="nav-item">
+       <a class="text-dark nav-link <?php 
+          if ($page == 'manage-educators.php') { echo 'active bg-primary';}?>" href="manage-educators.php">
+        <i class="fa-solid fa-person-chalkboard"></i>
+        educators
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="text-dark nav-link <?php 
+          if ($page == 'manage-students.php') { echo 'active bg-primary';}?>" href="manage-students.php">
+        <i class="fa-solid fa-graduation-cap"></i>
+        Students
+       </a>
+      </li>
       <li class="nav-item">
        <a class="text-dark nav-link <?php if($page == 'contact.php') {echo 'active bg-primary';} ?>" href="contact.php">
        <i class="fa-solid fa-phone"></i>
