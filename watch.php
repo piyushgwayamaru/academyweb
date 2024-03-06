@@ -17,6 +17,23 @@
 
 </head>
 <style>
+
+		/* Add this CSS to stick header-logo to the top */
+		.header-logo {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 16%;
+			background-color: #ffffff;
+			z-index: 1000; /* Ensure it's above other content */
+			padding: 10px 20px; /* Adjust padding as needed */
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+		}
+
+		/* Add this CSS to offset content below the fixed header */
+		.main-content {
+			margin-top: 60px; /* Adjust margin-top to match the height of the fixed header */
+		}
 	body {
   		background-color: #fbfbfb;
 	}
@@ -28,15 +45,25 @@
 
 	/* Sidebar */
 	.sidebar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			padding-top: 50px;
+			width: 240px;
+			height: 100%;
+			overflow-y: auto;
+			background-color: #f1f1f1;
+		}
+	/* .sidebar {
 	position: fixed;
 	top: 0;
 	bottom: 0;
 	left: 0;
-	padding: 17px 0 0; /* Height of navbar */
+	padding: 17px 0 0; 
 	box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
 	width: 240px;
 	z-index: 600;
-	}
+	} */
 
 	@media (max-width: 991.98px) {
 	.sidebar {
@@ -91,42 +118,43 @@
 		  <div class="list-group list-group-flush mx-3 mt-5">
 			<h5><?php echo $course_name; ?></h5>
 			<hr>
-        <?php
-			$sql2="SELECT * FROM tbl_lesson where course_id=$course_id";
+        	<?php
+				$sql2="SELECT * FROM tbl_lesson where course_id=$course_id";
 
-			$res2=mysqli_query($conn,$sql2);
-			$count2=mysqli_num_rows($res2);
+				$res2=mysqli_query($conn,$sql2);
+				$count2=mysqli_num_rows($res2);
 
-			if($count2>0)
-			{
-				while($row2=mysqli_fetch_assoc($res2))
+				if($count2>0)
 				{
-					$lesson_id = $row2['id'];
-					$lesson_name = $row2['lesson_name'];
-					
-					echo $lesson_name;
-					$sql3="SELECT sublesson_name, sublesson_video FROM tbl_sublesson where lesson_id=$lesson_id";
-
-					$res3=mysqli_query($conn,$sql3);
-					$count3=mysqli_num_rows($res3);
-
-					if($count3>0)
+					while($row2=mysqli_fetch_assoc($res2))
 					{
-						while($row3=mysqli_fetch_assoc($res3))
+						$lesson_id = $row2['id'];
+						$lesson_name = $row2['lesson_name'];
+						
+						echo $lesson_name;
+						$sql3="SELECT sublesson_name, sublesson_video FROM tbl_sublesson where lesson_id=$lesson_id";
+
+						$res3=mysqli_query($conn,$sql3);
+						$count3=mysqli_num_rows($res3);
+
+						if($count3>0)
 						{
-							$sublesson_name=$row3['sublesson_name'];
-							$video = $row3['sublesson_video'];
-							$videopath = 'educator/videos/'.$video;
-							?>
-							<button id="btn" type="button" onclick="displayvideo('<?php echo $videopath; ?>')">
-								<?php echo $sublesson_name; ?>
-							</button>
-							<?php
-						}
+							while($row3=mysqli_fetch_assoc($res3))
+							{
+								$sublesson_name=$row3['sublesson_name'];
+								$video = $row3['sublesson_video'];
+								$videopath = 'educator/videos/'.$video;
+								?>
+								<button id="btn" type="button" onclick="displayvideo('<?php echo $videopath; ?>')">
+									<?php echo $sublesson_name; ?>
+								</button>
+								<?php
+							}
+						}?>
+					<br><?php
 					}
 				}
-			}
-		?>
+			?>
 
 
 
