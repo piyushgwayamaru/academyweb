@@ -56,7 +56,6 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 				{
 					while($row2=mysqli_fetch_assoc($res2))
 					{
-						//print_r($row); die(); // [id] => 1 [category_id] => 1 [image] => Course-Name-3425.jpg [title] => Html For Beginners [instructor] => Salam Khan [active] => Yes )
 						$id=$row2['id'];
 						$title=$row2['title'];
 						$image_name=$row2['image'];
@@ -121,7 +120,7 @@ if (isset($_SESSION['SESSION_EMAIL'])){
 						<a href="watch.php?course_id=<?php echo $id; ?>" class="link">
 							<div class="courses-item-inner">
 								<div class="img-box">
-									<img src="img/admin/course/<?php echo $image_name; ?>" alt="course img" style="height:175px; width:300px">
+									<img src="img/admin/course/<?php echo $image_name; ?>" alt="course img" style="height:175px; width:300px;">
 								</div>
 								<h3 class="title"><?php echo $title;?></h3>
 								<div class="instructor">
