@@ -1,31 +1,87 @@
-<?php include('header.php'); 
-include ('navbar.php');?>
+<?php include('header.php'); ?>
 
+<?php
+if(!isset($_SESSION)){ 
+  session_start(); 
+}
 
+include('navbar.php'); 
 
-<h1 style='color: Black; margin-top:3rem'><center>Dashboard Summary</center></h1>
-			
-				
+ if(isset($_SESSION['user'])){
+  $adminEmail = $_SESSION['user'];
+ } else {
+  echo "<script> location.href='index.php'; </script>";
+ }
+ 
+ 
+ $sql = "SELECT * FROM tbl_course";
+$result = $conn->query($sql);
+$totalcourse = $result->num_rows;
 
-					<!-- <div class="col-lg-3 col-md-4 col-sm-6 " style="align-item:center">
-						<div class="card border-light mb-3" 	style="max-width: 18rem; height:10rem;">
-						
+$sql = "SELECT tbl_enroll.id, tbl_course.price
+FROM tbl_enroll 
+INNER JOIN tbl_course ON tbl_enroll.course_id = tbl_course.id ";
 
-                                // $sql="Select * FROM tbl_contact";
-                                // // execute the query 
-                                // $res=mysqli_query($conn,$sql);
+ $result = $conn->query($sql);
+ $totalsold = $result->num_rows;
 
-                                // $count5=mysqli_num_rows($res);
+ $totalRevenue = 0;
 
-                                ?>
-  							<div class="card-header text-center h5">Number Of Contacts</div>
-  							<div class="card-body">
-    							<h5 class="card-title text-center"><?php echo $count5;   ?></h5>
-  							</div>
-						</div>
-					</div> -->
-                   
+// Fetch each row
+while ($row = $result->fetch_assoc()) {
+    // Access the 'price' column from each row
+    $price = $row['price'];
 
-
-
-                   
+    // Increment total revenue by the price
+    $totalRevenue += $price;
+}
+?>
+  <div class="col-sm-9" style="margin-top: 30px; margin-left:280px;">
+    <div class="row mx-5 text-center">
+      <div class="col-sm-4  ">
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+          <div class="card-header">Courses</div>
+          <div class="card-body">
+            <h4 class="card-title">
+              <?php echo $totalcourse; ?>
+            </h4>
+            <a class="btn text-white" href="manage-courses.php">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4  ">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+          <div class="card-header">Courses sold</div>
+          <div class="card-body">
+            <h4 class="card-title">
+              <?php echo $totalsold; ?>
+            </h4>
+            <a class="btn text-white" href="sell-report.php">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4  ">
+        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+          <div class="card-header">Total Earnings</div>
+          <div class="card-body">
+            <h4 class="card-title">
+              NRs. <?php echo $totalRevenue; ?>
+            </h4>
+            <a class="btn text-white" href="earning.php">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mx-5 mt-5 text-center">
+      <!--Table-->
+     
+    </div>
+  </div>
+  </div>
+  </div>
+  
+  </div>  <!-- div Row close from header -->
+ </div>  <!-- div Conatiner-fluid close from header -->
+<?php
+// include('footer.php'); 
+?>
