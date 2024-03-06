@@ -85,7 +85,7 @@ while ($row = $result->fetch_assoc()) {
             <h4 class="card-title">
               NRs. <?php echo $totalRevenue; ?>
             </h4>
-            <a class="btn text-white" href="earning.php">View</a>
+            <a class="btn text-white" href="earnings.php">View</a>
           </div>
         </div>
       </div>
