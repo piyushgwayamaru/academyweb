@@ -51,9 +51,9 @@ include('navbar.php');
 					<tr>
 						<th>S.N.</th>
 						<th>Title</th>
-						<th>Image</th>
-						<th>Status</th>
-						<th>Actions</th>
+						<th class="text-center">Image</th>
+						<th class=" text-center">Status</th>
+						<th class="col-3 text-center">Actions</th>
 					</tr>
 				</thead>
 

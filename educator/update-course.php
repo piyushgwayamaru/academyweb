@@ -33,9 +33,8 @@
 				$current_image = $row2['image'];
 				$title = $row2['title'];
 				$current_category = $row2['category_id'];
-                
-				$price = $_POST['price'];
-				$discount = $_POST['discount'];
+				$price = $row2['price'];
+				$discount = $row2['discount'];
 
 			}
 			else

@@ -14,13 +14,6 @@ if (isset($_SESSION['mark'])){
 }
 
 ?>
-			
-
-			
-
-		
-			
-			
 			<table class="tbl-full">
 				<tr>
 					<th>S.N.</th>
@@ -69,7 +62,7 @@ if (isset($_SESSION['mark'])){
 							<td><?php echo $message; ?>
 							<td>
 								
-								<a href="mark-as-read.php?oontact_id=<?php echo $contact_id; ?>" class="btn-danger""><i class="fa-solid fa-square-check"></i> Mark as read</a>
+								<a href="mark-as-read.php?oontact_id=<?php echo $contact_id; ?>" class="btn-danger"><i class="fa-solid fa-square-check"></i> Mark as read</a>
 							</td>
 						</tr>
 

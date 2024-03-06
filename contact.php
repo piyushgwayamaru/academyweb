@@ -94,7 +94,6 @@
 		//get the value from category form
 		$name = $_POST['f_name'];
 		$email = $_POST['email'];
-		$phone = $_POST['phone'];
 		$message = $_POST['message'];
 
 		
@@ -102,8 +101,8 @@
 		$sql = "INSERT INTO tbl_contact SET
 			fullname = '$name',
 			email = '$email',
-			phone = $phone,
-			message = '$message'
+			message = '$message',
+			mark_as_read = 'false'
 		";
 
 		//execute the query and save in db
@@ -129,7 +128,6 @@
 	}
 }
 	?>
-}
 
 
 
