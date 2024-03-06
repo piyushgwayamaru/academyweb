@@ -63,7 +63,7 @@ while ($row = $result->fetch_assoc()) {
             <h4 class="card-title">
               <?php echo $totalEducators; ?>
             </h4>
-            <a class="btn text-white" href="educators.php">View</a>
+            <a class="btn text-white" href="manage-educators.php">View</a>
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@ while ($row = $result->fetch_assoc()) {
             <h4 class="card-title">
               <?php echo $totalStudents; ?>
             </h4>
-            <a class="btn text-white" href="students.php">View</a>
+            <a class="btn text-white" href="manage-students.php">View</a>
           </div>
         </div>
       </div>

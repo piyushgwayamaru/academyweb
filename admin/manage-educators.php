@@ -54,7 +54,7 @@ include('navbar.php');
 					<th>Name</th>
 					<th>Email</th>
 					<!-- <th>Active</th> -->
-					<th>Actions</th>
+					<!-- <th>Actions</th> -->
 				</tr>
 
 				<?php  
@@ -90,11 +90,11 @@ include('navbar.php');
 							<td><?php echo $name; ?></td>
 							<td><?php echo $email; ?></td>
 
-							<td><?php #echo $active; ?>
+							<!-- <td><?php #echo $active; ?>
 							<td>
-								<a href="update-category.php?id=<?php echo $id; ?>" class="btn-secondary">Update Category</a> 
-								<a href="delete-category.php?id=<?php echo $id; ?>" class="btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete Category</a>
-							</td>
+								<a href="update-category.php?id=<?php #echo $id; ?>" class="btn-secondary">Update Category</a> 
+								<a href="delete-category.php?id=<?php #echo $id; ?>" class="btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete Category</a>
+							</td> -->
 						</tr>
 
 
