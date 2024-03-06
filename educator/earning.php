@@ -1,8 +1,17 @@
-<?php include('header.php');
+<?php 
+include('header.php');
 include('navbar.php'); 
 
 if (isset($_SESSION['educator_id'])){
     $educator_id = $_SESSION['educator_id'];
+}
+
+$start_date = "";
+$end_date = "";
+
+if(isset($_POST['submit'])){
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
 }
 ?>
 
@@ -15,13 +24,13 @@ if (isset($_SESSION['educator_id'])){
                     <div class="input-fields d-flex">
                         <div class="start_date mr-5" >
                             <label for="start_date"><h6>Start Date:</h6></label>
-                            <input type="date" class="form-control" id="start_date" name="start_date" required>
+                            <input type="date" class="form-control" id="start_date" name="start_date" required value="<?php echo $start_date; ?>">
                         </div>
                         <div class="end_date" style="margin-left:4rem">
                             <label for="end_date"><h6>End Date:</h6></label>
-                            <input type="date" class="form-control" id="end_date" name="end_date" required>
+                            <input type="date" class="form-control" id="end_date" name="end_date" required value="<?php echo $end_date; ?>">
                         </div>
-                        <button type="submit" name="submit" class="rounded btn btn-success" style="height:3rem; margin-left:4rem; margin-top:3px;">Search</button>
+                        <button type="submit" name="submit" class="rounded btn btn-success" style="height:3rem; margin-left:4rem; margin-top:15px;">Search</button>
                     </div>
                 </form>
             </div>
@@ -29,15 +38,11 @@ if (isset($_SESSION['educator_id'])){
     
 <?php
 if(isset($_POST['submit'])){
-    $start_date = $_POST['start_date'];
-    $end_date = $_POST['end_date'];
-    
     $sql = "SELECT tbl_course.price
         FROM tbl_enroll 
         INNER JOIN tbl_course ON tbl_enroll.course_id = tbl_course.id 
         WHERE tbl_course.educator_id = '$educator_id' AND tbl_enroll.status = 1
         AND tbl_enroll.order_date >= '$start_date' AND tbl_enroll.order_date <= '$end_date'";
-
 
     $result = $conn->query($sql);
 
