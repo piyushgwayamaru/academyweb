@@ -95,6 +95,19 @@ $page = $fileName;
        </a>
       </li>
       <li class="nav-item">
+       <a class="text-dark nav-link <?php 
+          if ($page == 'manage-sales.php') { echo 'active bg-primary';}?>" href="manage-sales.php">
+        <i class="fa-solid fa-graduation-cap"></i>
+        Sales
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="text-dark nav-link <?php if($page == 'earnings.php') {echo 'active bg-primary';} ?>" href="earnings.php">
+       <i class="fa-solid fa-dollar-sign"></i>
+               Earnings
+       </a>
+      </li>
+      <li class="nav-item">
        <a class="text-dark nav-link <?php if($page == 'contact.php') {echo 'active bg-primary';} ?>" href="contact.php">
        <i class="fa-solid fa-phone"></i>
         Contact

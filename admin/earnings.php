@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
 
         // Increment total earnings by the price
         $totalEarnings += $price;
-        $educatorEarnings = $totalEarnings - (0.3 * $totalEarnings);
+        $educatorEarnings = (0.3 * $totalEarnings);
     }
     
     ?>

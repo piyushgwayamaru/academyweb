@@ -37,6 +37,7 @@ while ($row = $result->fetch_assoc()) {
 
     // Increment total revenue by the price
     $totalRevenue += $price;
+    $educatorRevenue = $totalRevenue - (0.3*$totalRevenue);
 }
 ?>
   <div class="col-sm-9" style="margin-top: 30px; margin-left:280px;">
@@ -59,7 +60,7 @@ while ($row = $result->fetch_assoc()) {
             <h4 class="card-title">
               <?php echo $totalsold; ?>
             </h4>
-            <a class="btn text-white" href="sell-report.php">View</a>
+            <a class="btn text-white" href="students.php">View</a>
           </div>
         </div>
       </div>
@@ -68,7 +69,7 @@ while ($row = $result->fetch_assoc()) {
           <div class="card-header">Total Earnings</div>
           <div class="card-body">
             <h4 class="card-title">
-              NRs. <?php echo $totalRevenue; ?>
+              NRs. <?php echo $educatorRevenue; ?>
             </h4>
             <a class="btn text-white" href="earning.php">View</a>
           </div>
