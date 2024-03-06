@@ -61,8 +61,8 @@
 	}
 
 	.sidebar button.active {
-	background-color: red; /* Change this color to whatever you prefer */
-	color: black; /* Text color when active */
+	background-color: blue; /* Change this color to whatever you prefer */
+	color: white; /* Text color when active */
 	}	
 
 	.sidebar-sticky {
@@ -162,28 +162,39 @@
     <!--Main layout-->
 
 <script>
-	function displayvideo(videoPath) {
-		// Create a video element
-		var videoElement = document.createElement('video');
-		videoElement.controls = true;
-		videoElement.src = videoPath;
+	window.addEventListener('DOMContentLoaded', (event) => {
+    // Select the first video button
+    var firstVideoButton = document.querySelector('.sidebar button');
+    if (firstVideoButton) {
+        // Trigger click event on the first video button
+        firstVideoButton.click();
+    }
+});
 
-		// Get the video container and append the video element
-		var videoContainer = document.getElementById('videoContainer');
-		videoContainer.innerHTML = ''; // Clear existing content
-		videoContainer.appendChild(videoElement);
+function displayvideo(videoPath) {
+    // Create a video element
+    var videoElement = document.createElement('video');
+    videoElement.controls = true;
+    videoElement.autoplay = true; // Add autoplay attribute to start playing automatically
+    videoElement.src = videoPath;
 
-		// Remove active class from all buttons
-		var buttons = document.querySelectorAll('.sidebar button');
-		buttons.forEach(function(button) {
-			button.classList.remove('active');
-		});
+    // Get the video container and append the video element
+    var videoContainer = document.getElementById('videoContainer');
+    videoContainer.innerHTML = ''; // Clear existing content
+    videoContainer.appendChild(videoElement);
 
-		// Add active class to the button corresponding to the clicked video
-		var selectedButton = document.querySelector('button[data-video="' + videoPath + '"]');
-		if (selectedButton) {
-			selectedButton.classList.add('active');
-		}
-	}
+    // Remove active class from all buttons
+    var buttons = document.querySelectorAll('.sidebar button');
+    buttons.forEach(function (button) {
+        button.classList.remove('active');
+    });
+
+    // Add active class to the button corresponding to the clicked video
+    var selectedButton = document.querySelector('button[data-video="' + videoPath + '"]');
+    if (selectedButton) {
+        selectedButton.classList.add('active');
+    }
+}
+
 
 </script>
