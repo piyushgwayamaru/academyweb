@@ -1,9 +1,7 @@
 <?php include('header.php');
 include('navbar.php'); 
 
-if (isset($_SESSION['educator_id'])){
-    $educator_id = $_SESSION['educator_id'];
-}
+
 ?>
 
 <div class="col-sm-9" style="margin-top: 30px; margin-left:230px;">
@@ -35,7 +33,7 @@ if(isset($_POST['submit'])){
     $sql = "SELECT tbl_course.price
         FROM tbl_enroll 
         INNER JOIN tbl_course ON tbl_enroll.course_id = tbl_course.id 
-        WHERE tbl_course.educator_id = '$educator_id' AND tbl_enroll.status = 1
+        WHERE tbl_enroll.status = 1
         AND tbl_enroll.order_date >= '$start_date' AND tbl_enroll.order_date <= '$end_date'";
 
 
@@ -52,7 +50,7 @@ if(isset($_POST['submit'])){
 
         // Increment total earnings by the price
         $totalEarnings += $price;
-        $educatorEarnings = (0.3 * $totalEarnings);
+        $adminEarnings = (0.3 * $totalEarnings);
     }
     
     ?>
@@ -61,7 +59,7 @@ if(isset($_POST['submit'])){
             <div class="card-header text-dark"><h5>Earnings from <?php echo $start_date; ?> to <?php echo $end_date ?></h5></div>
                 <div class="card-body">
                     <h4 class="card-title">
-                        NRs. <?php echo $educatorEarnings; ?>
+                        NRs. <?php echo $adminEarnings; ?>
                     </h4>
                 </div>
             </div>

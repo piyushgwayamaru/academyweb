@@ -273,16 +273,15 @@ $course_instructor = $row1['name'];
 									<a href="enroll.php?course_id=<?php echo $course_id; ?>&price_new=<?php echo $price_new; ?>" style="color:white;">
 									<button type="button" class="btn btn-theme btn-block">
 										<?php
-											$email = $_SESSION["SESSION_EMAIL"];
-											$sql = "SELECT status FROM tbl_enroll WHERE email = '$email' AND course_id = '$course_id'";
-											$res = mysqli_query($conn, $sql);
-											$row = mysqli_fetch_assoc($res);
-											$status = $row['status'];
-											if ($status != 1){
-												echo "Enroll now";
-											}else{
-												echo "Watch now";
-											}
+										// if (isset($_SESSION['SESSION_EMAIL'])){
+										// 	$email = $_SESSION["SESSION_EMAIL"];
+										// 	$sql = "SELECT status FROM tbl_enroll WHERE email = '$email' AND course_id = '$course_id'";
+										// 	$res = mysqli_query($conn, $sql);
+										// 	$row = mysqli_fetch_assoc($res);
+										// 	$status = $row['status'];
+										// }
+										echo "Enroll now";
+										
 										?>
 									
 									</button></a>

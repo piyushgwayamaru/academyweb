@@ -40,7 +40,7 @@
 		<?php
 		$searchitem = $_POST['searchitem'];
 
-		$query = "SELECT * FROM tbl_course WHERE title LIKE '%$searchitem%' AND active = 'yes'";
+		$query = "SELECT * FROM tbl_course WHERE title LIKE '%$searchitem%' AND active = 'Yes'";
 		$result = mysqli_query($conn, $query);
 	
 		if (mysqli_num_rows($result) > 0 ){
@@ -235,7 +235,7 @@ if (!isset($_POST['search'])){
 				<div class="nav nav-tabs border-0 justify-content-center mb-4" id="web-development-tab" role="tablist">
 
 				<?php
-				$sql="SELECT * FROM tbl_category where active='yes'";
+				$sql="SELECT * FROM tbl_category where active='Yes'";
 
 				$res=mysqli_query($conn,$sql);
 
@@ -261,7 +261,7 @@ if (!isset($_POST['search'])){
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
 				<?php 
-				$sql="SELECT * FROM tbl_category where active='yes'";
+				$sql="SELECT * FROM tbl_category where active='Yes'";
 
 				$res=mysqli_query($conn,$sql);
 				if($count>0)

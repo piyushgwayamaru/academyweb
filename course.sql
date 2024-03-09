@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2024 at 06:54 PM
+-- Generation Time: Mar 09, 2024 at 02:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -79,14 +79,6 @@ CREATE TABLE `tbl_contact` (
   `mark_as_read` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_contact`
---
-
-INSERT INTO `tbl_contact` (`id`, `fullname`, `email`, `message`, `mark_as_read`) VALUES
-(17, 'Piyush Gwayamaru', 'shresthapiyush6@gmail.com', 'I need a php coursess freely.', ''),
-(18, 'Piyush Gwayamaru', 'shresthapiyush6@gmail.com', 'I need a php coursess freely.', '');
-
 -- --------------------------------------------------------
 
 --
@@ -114,9 +106,10 @@ CREATE TABLE `tbl_course` (
 --
 
 INSERT INTO `tbl_course` (`id`, `category_id`, `image`, `title`, `language`, `description`, `preview_video`, `active`, `price`, `ratings`, `discount`, `updatedAt`, `educator_id`) VALUES
-(56, 1, 'Course-Name-7701.png', 'CSS', 'english', 'embark kasdfasdfads', 'video-65deeaa0670ef2.51334984.mp4', 'Yes', 1500, 0, 0, '2024-02-29 04:50:30', 6),
-(57, 6, 'Course-Name-4611.png', 'C Programming', 'english', 'C programming ', 'video-65df1bfd57a0e1.24725569.mp4', 'Yes', 2000, 0, 2, '2024-02-29 01:44:06', 6),
-(60, 1, 'Course-Name-5024.png', 'JavaScript Course Beginners', 'english', 'Course Description: Are you eager to dive into the world of web development? JavaScript is an essential tool for anyone looking to build dynamic, interactive websites and web applications. This beginner-level course is designed to provide you with a solid foundation in JavaScript programming, regardless of your prior experience with coding.', 'video-65e0016cb36bb5.91855889.mp4', 'Yes', 2000, 0, 13, '2024-02-29 04:00:44', 6);
+(62, 1, 'Course-Name-4808.png', 'CSS for Begineers', 'english', 'Dive into the world of web design with our CSS course, tailored to teach you how to style and visually organize HTML content', 'video-65e92dd3408493.66432709.mp4', 'No', 1200, 0, 17, '2024-03-07 03:00:35', 6),
+(63, 1, 'Course-Name-579.jpg', 'HTML', 'english', 'Embark on your web developement journey with our comprehensive HMTL course, the foundational building block for creating web content.', 'video-65e93122248b06.47050990.mp4', 'Yes', 1800, 0, 13, '2024-03-07 05:07:03', 6),
+(64, 1, 'Course-Name-7127.png', 'JavaScript', 'english', 'Unlock the dynamic and interactive elements of web development with out JavaScript course. From basic syntax and data structures to the Document Object Model manipulation, and event handling.', 'video-65e932ad51bb45.89911722.mp4', 'Yes', 2100, 0, 20, '2024-03-07 07:35:44', 6),
+(65, 6, 'Course-Name-3296.png', 'C++ Course', 'english', 'Step into the world of programming with our C++ course, designed to introduce you o both procedural and object oriented programming paradigms. Learn to write efficient code with a deep dive into variables. control glow, functions and data structures, progressing to complex c concepts like inheritance, polymorphism, and templates t', 'video-65e93368526867.86221914.mp4', 'No', 3000, 0, 25, '2024-03-07 05:02:38', 6);
 
 -- --------------------------------------------------------
 
@@ -153,7 +146,8 @@ INSERT INTO `tbl_educator` (`id`, `name`, `email`, `password`) VALUES
 (5, 'Test', 'test@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e'),
 (6, 'educator', 'educator@gmail.com', 'ae3a8f55b3ddd9466c9866bc2261e22e'),
 (7, 'sam', 'sam@gmail.com', '332532dcfaa1cbf61e2a266bd723612c'),
-(8, 'teacher', 'teacher@gmail.com', '8d788385431273d11e8b43bb78f3aa41');
+(8, 'teacher', 'teacher@gmail.com', '8d788385431273d11e8b43bb78f3aa41'),
+(9, 'Rajesh Hamal', 'rajesh@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b');
 
 -- --------------------------------------------------------
 
@@ -180,8 +174,8 @@ CREATE TABLE `tbl_enroll` (
 --
 
 INSERT INTO `tbl_enroll` (`order_id`, `id`, `course_id`, `amount`, `name`, `address`, `phone`, `gender`, `status`, `email`, `order_date`) VALUES
-('bYSwkSSgId', 54, 60, 0, 'nabraj', '', 2147483647, '', 1, 'nabraj@gmail.com', '2024-02-29 04:09:59'),
-('criioHmQ7L', 55, 60, 0, 'piyush', '', 2147483647, '', 1, 'piyush@gmail.com', '2024-02-29 04:57:50');
+('dlHCbSEh9s', 62, 63, 0, 'nabraj', '', 0, '', 1, 'nabraj@gmail.com', '2024-03-07 07:09:35'),
+('pLA1HXA3uS', 70, 64, 0, 'nabraj', '', 2147483647, '', 1, 'nabraj@gmail.com', '2024-03-09 13:36:11');
 
 -- --------------------------------------------------------
 
@@ -239,10 +233,26 @@ CREATE TABLE `tbl_lesson` (
 --
 
 INSERT INTO `tbl_lesson` (`id`, `course_id`, `lesson_name`, `active`) VALUES
-(44, 56, 'CSS Day 1', 'Yes'),
-(45, 56, 'CSS Day 2', 'Yes'),
-(50, 60, 'Introduction', 'Yes'),
-(51, 60, 'Conditionals', 'Yes');
+(53, 62, 'Day 1: CSS Foundation', 'Yes'),
+(54, 62, 'Day 2: Layout Techniques', 'Yes'),
+(55, 62, 'Day 3: Styling Essentials and Responsive Desgin', 'Yes'),
+(56, 62, 'Day 5: Advanced CSS features', 'Yes'),
+(57, 62, 'Day 5: Responsive Design and Best Practices', 'Yes'),
+(58, 63, 'Day 1: Introduction to HTML and Basic Structure', 'Yes'),
+(59, 63, 'Day 2: Organizing Content and Structure', 'Yes'),
+(60, 63, 'Day 3: HTML forms and User Inputs', 'Yes'),
+(61, 63, 'Day 4: Embedding the Media and Interactive Elements', 'Yes'),
+(62, 63, 'Day 5: Advanced HTML5 features', 'Yes'),
+(63, 64, 'Day 1: JavaScript Basics', 'Yes'),
+(64, 64, 'Day 2: Functions and Objects', 'Yes'),
+(65, 64, 'Day 3: DOM Manipulation', 'Yes'),
+(66, 64, 'Day 4: Advanced JS Concepts', 'Yes'),
+(67, 64, 'Day 5: JS in Real World', 'Yes'),
+(68, 65, 'Day 1: Introduction to C++ and Setup', 'Yes'),
+(69, 65, 'Day 2: Fundamental Concepts ', ''),
+(70, 65, 'Day 3: Object Oriented Programming in C++', 'Yes'),
+(71, 65, 'Day 4: Advanced C++ Features', 'Yes'),
+(72, 65, 'Day 5: Data Structures and Algorithms', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -269,7 +279,10 @@ INSERT INTO `tbl_reviews` (`review_id`, `user_name`, `user_review`, `rating_data
 (25, 'John', 'I have gone through all the courses. I have known alot.', 4, '2024-02-28', 56),
 (26, 'dfdf', 'q23easd', 1, '2024-02-28', 56),
 (27, 'Nabraj', 'Excellent course.', 4, '2024-02-29', 59),
-(28, 'Piyush', 'course review', 3, '2024-02-29', 56);
+(28, 'Piyush', 'course review', 3, '2024-02-29', 56),
+(29, 'Piyush', 'good', 5, '2024-03-07', 63),
+(30, 'asdfasdfasdf', 'dfgh', 4, '2024-03-07', 63),
+(31, 'kriti', 'fantastic', 4, '2024-03-07', 63);
 
 -- --------------------------------------------------------
 
@@ -292,16 +305,41 @@ CREATE TABLE `tbl_sublesson` (
 --
 
 INSERT INTO `tbl_sublesson` (`sublesson_id`, `lesson_id`, `sublesson_name`, `sublesson_video`, `active`, `duration`, `pdf_notes`) VALUES
-(26, 44, 'day 1', 'video-65df38481be054.64356636.mp4', 'Yes', '00:03:38', 'pdf-65df38472d7bd1.64597477.pdf'),
-(27, 44, 'day 2', 'video-65df4391d75254.59761444.mp4', 'Yes', '00:00:28', 'pdf-65df4391af4778.14001832.pdf'),
-(28, 45, 'css margin', 'video-65df43e3e43f73.05403949.mp4', 'Yes', '00:03:38', 'pdf-65df43e3d5c899.77672314.pdf'),
-(29, 45, 'css background', 'video-65df43f85fd1b0.12146130.mp4', 'Yes', '00:00:28', 'pdf-65df43f84f20e5.95782476.pdf'),
-(38, 50, 'Introduction + Setup', 'video-65e001e161a497.32927735.mp4', 'Yes', '00:13:45', 'pdf-65e001e090d1e7.16477631.pdf'),
-(39, 50, 'Variables in JavaScript ', 'video-65e0021773f479.29916393.mp4', 'Yes', '00:13:33', 'pdf-65e00217614af6.81096062.pdf'),
-(40, 50, 'const, let and var ', 'video-65e0025136c513.29621131.mp4', 'Yes', '00:12:57', 'pdf-65e00251256d75.08312755.pdf'),
-(41, 51, 'Conditional expressions', 'video-65e002a326f191.42194626.mp4', 'Yes', '00:20:58', 'pdf-65e002a31034d7.62435422.pdf'),
-(42, 51, 'For Loop', 'video-65e002eea51182.91506097.mp4', 'Yes', '00:19:39', 'pdf-65e002ee92a5e7.88487976.pdf'),
-(43, 51, 'While Loop', 'video-65e0030418b1f5.64254429.mp4', 'Yes', '00:11:07', 'pdf-65e00304080e18.47280742.pdf');
+(52, 53, 'Selectors in CSS', 'video-65e92f9116b754.10141726.mp4', 'Yes', '00:22:39', ''),
+(53, 53, 'Colors in CSS', 'video-65e92fb8258960.07493057.mp4', 'Yes', '00:12:39', ''),
+(55, 54, 'Units in CSS', 'video-65e930251a0836.84947247.mp4', 'Yes', '00:18:44', ''),
+(56, 55, 'CSS Box Models', 'video-65e93048f22063.29662311.mp4', 'Yes', '00:12:20', ''),
+(57, 55, 'Text and Font Properties', 'video-65e9305c21d460.16385896.mp4', 'Yes', '00:21:14', ''),
+(58, 56, 'Position Property', 'video-65e930774885c8.67254482.mp4', 'Yes', '00:16:39', ''),
+(59, 57, 'Display Property ', 'video-65e9309a790900.50724138.mp4', 'Yes', '00:17:03', ''),
+(60, 57, 'Float and Clear', 'video-65e930a8320c41.79370646.mp4', 'Yes', '00:26:19', ''),
+(61, 58, 'Introduction to HTML', 'video-65e9434dc2bce6.42560141.mp4', 'Yes', '00:18:26', ''),
+(62, 58, 'Installing VS Code and Live Server', 'video-65e9436c0934f6.43419809.mp4', 'Yes', '00:17:49', ''),
+(63, 59, 'Basic Structure of a Website', 'video-65e9439c3fcd23.05485571.mp4', 'Yes', '00:11:45', ''),
+(65, 60, 'Title, Script, Link and Meta Data', 'video-65e943fc1b4f95.37219254.mp4', 'Yes', '00:08:48', ''),
+(66, 61, 'Img and Anchor Tags', 'video-65e944131b00e5.25354172.mp4', 'Yes', '00:14:38', ''),
+(67, 62, 'Heading & Paragraphs', 'video-65e9443602d455.49782284.mp4', 'Yes', '00:13:31', ''),
+(68, 62, 'Lists and Tables', 'video-65e94447e368c4.14473538.mp4', 'Yes', '00:09:57', ''),
+(69, 63, 'Introduction', 'video-65e94567a292f1.64044492.mp4', 'Yes', '00:13:45', ''),
+(70, 63, 'Variables in JS', 'video-65e94576b527e8.92629160.mp4', 'Yes', '00:13:33', ''),
+(71, 64, 'Const, Let and Var in JS', 'video-65e94592199dd7.08025228.mp4', 'Yes', '00:12:57', ''),
+(72, 64, 'Pimitives and Objects', 'video-65e945a2d98150.03889753.mp4', 'Yes', '00:11:31', ''),
+(73, 65, 'Operators and Expressions', 'video-65e945bd8f18e5.19441307.mp4', 'Yes', '00:23:25', ''),
+(74, 65, 'Conditional Expressions', 'video-65e945d0b35d78.48526215.mp4', 'Yes', '00:20:58', ''),
+(75, 66, 'For Loops', 'video-65e946128c9082.44677162.mp4', 'Yes', '00:19:39', ''),
+(76, 66, 'While Loops', 'video-65e94634c89ff4.77358905.mp4', 'Yes', '00:11:07', ''),
+(77, 67, 'Chapter 2', 'video-65e9466d415f06.89123039.mp4', 'Yes', '00:14:04', ''),
+(78, 67, 'Chapter 1', 'video-65e94694d8c2f3.66001100.mp4', 'Yes', '00:12:24', ''),
+(79, 68, 'Introduction', 'video-65e94934b54f74.75881586.mp4', 'Yes', '00:22:21', ''),
+(80, 68, 'Basic Structure of C++ Program', 'video-65e9494abca127.05558909.mp4', 'Yes', '00:19:08', ''),
+(81, 69, 'Variables and Comments', 'video-65e9495ecf0867.04321240.mp4', 'Yes', '00:15:44', ''),
+(82, 69, 'Variable Scope & Data types', 'video-65e94978e70a01.49774486.mp4', 'Yes', '00:28:32', ''),
+(83, 70, 'Basic Input Output', 'video-65e949959a07e6.53813217.mp4', 'Yes', '00:16:10', ''),
+(84, 70, 'Header files and Operators', 'video-65e949a591b1f6.72852066.mp4', 'Yes', '00:23:35', ''),
+(85, 71, 'Reference Variable and TypeCasting', 'video-65e949bb3ad930.20051550.mp4', 'Yes', '00:20:16', ''),
+(86, 71, 'Constants, Manipulators & Operators Precedence', 'video-65e949e5cd24e2.76694555.mp4', 'Yes', '00:16:06', ''),
+(87, 71, 'C++ Control Structures', 'video-65e949f5692e71.90148372.mp4', 'Yes', '00:23:26', ''),
+(88, 72, 'For While and do-while loops', 'video-65e94a1504b494.95259967.mp4', 'Yes', '00:20:34', '');
 
 -- --------------------------------------------------------
 
@@ -331,7 +369,11 @@ INSERT INTO `tbl_user` (`id`, `name`, `email`, `password`) VALUES
 (26, 'educator', 'educator@gmail.com', 'ae3a8f55b3ddd9466c9866bc2261e22e'),
 (27, 'ram', 'ram@gmail.com', '4641999a7679fcaef2df0e26d11e3c72'),
 (28, 'sohan basnet', 'sohan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
-(29, 'piyush', 'piyush@gmail.com', '86f500cd7b7d38e5d4ae6cde3920f589');
+(29, 'piyush', 'piyush@gmail.com', '86f500cd7b7d38e5d4ae6cde3920f589'),
+(30, 'SHRIYA', 'shriya@gmail.com', '25f9e794323b453885f5181f1b624d0b'),
+(31, 'rojish', 'rojish@gmail.com', '25f9e794323b453885f5181f1b624d0b'),
+(32, 'test', 'testt@gmail.com', '098f6bcd4621d373cade4e832627b4f6'),
+(33, 'nekesh', 'nek@gmail', '202cb962ac59075b964b07152d234b70');
 
 --
 -- Indexes for dumped tables
@@ -445,13 +487,13 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_contact`
 --
 ALTER TABLE `tbl_contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_course`
 --
 ALTER TABLE `tbl_course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `tbl_courseorder`
@@ -463,13 +505,13 @@ ALTER TABLE `tbl_courseorder`
 -- AUTO_INCREMENT for table `tbl_educator`
 --
 ALTER TABLE `tbl_educator`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_enroll`
 --
 ALTER TABLE `tbl_enroll`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `tbl_feedback`
@@ -487,25 +529,25 @@ ALTER TABLE `tbl_instructor_enroll`
 -- AUTO_INCREMENT for table `tbl_lesson`
 --
 ALTER TABLE `tbl_lesson`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `tbl_reviews`
 --
 ALTER TABLE `tbl_reviews`
-  MODIFY `review_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `review_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tbl_sublesson`
 --
 ALTER TABLE `tbl_sublesson`
-  MODIFY `sublesson_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `sublesson_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Constraints for dumped tables
