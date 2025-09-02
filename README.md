@@ -67,7 +67,7 @@ Visit: http://localhost/academyweb/
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="assets/screenshots/homepage.png" alt="Homepage" width="700"/>
+  <img src="assets/screenshots/homepage.png" alt="Homepage" width="500"/>
 </p>
 
 <p align="center">
@@ -99,6 +99,7 @@ Visit: http://localhost/academyweb/
 ## ⚠️ Security Notes
 - **SQL Injection:** Switch to **prepared statements** in production  
 - **Passwords:** Replace `md5()` / plain text with `password_hash()` + `password_verify()`  
+
 
 
 
