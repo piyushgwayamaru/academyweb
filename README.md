@@ -66,7 +66,7 @@ Visit: http://localhost/academyweb/
 ## 📸 Screenshots
 > Add your screenshots inside `assets/screenshots/` and update paths below:
 
-![Homepage](assets/screenshots/homepage.png)  
+![Homepage](assets/screenshots/homepage.png | width=600)
 ![Courses](assets/screenshots/courses_page.png)  
 ![Course Details](assets/screenshots/course_details.png)  
 ![My Courses](assets/screenshots/my_courses.png)  
@@ -79,3 +79,4 @@ Visit: http://localhost/academyweb/
 ## ⚠️ Security Notes
 - **SQL Injection:** Switch to **prepared statements** in production  
 - **Passwords:** Replace `md5()` / plain text with `password_hash()` + `password_verify()`  
+
