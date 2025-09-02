@@ -15,7 +15,6 @@ Create, manage, sell, and take courses — with built-in reviews and **eSewa pay
 ## 🛠 Tech Stack
 - **Backend:** PHP, MySQL, Apache (WAMP/XAMPP)  
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap  
-- **Tools:** Composer  
 - **Libraries:**  eSewa Payment Gateway API  
 
 ---
@@ -95,6 +94,7 @@ Visit: http://localhost/academyweb/
 </p>
 
 ---  
+
 
 
 
