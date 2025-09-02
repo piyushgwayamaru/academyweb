@@ -16,7 +16,7 @@ Create, manage, sell, and take courses — with built-in reviews and **eSewa pay
 - **Backend:** PHP, MySQL, Apache (WAMP/XAMPP)  
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap  
 - **Tools:** Composer  
-- **Libraries:** PHPMailer, eSewa Payment Gateway API  
+- **Libraries:**  eSewa Payment Gateway API  
 
 ---
 
@@ -94,11 +94,8 @@ Visit: http://localhost/academyweb/
   <img src="assets/screenshots/esewa_payment.png" alt="eSewa Payment" width="500"/>
 </p>
 
----
+---  
 
-## ⚠️ Security Notes
-- **SQL Injection:** Switch to **prepared statements** in production  
-- **Passwords:** Replace `md5()` / plain text with `password_hash()` + `password_verify()`  
 
 
 
