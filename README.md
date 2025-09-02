@@ -71,27 +71,27 @@ Visit: http://localhost/academyweb/
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/courses_page.png" alt="Courses" width="700"/>
+  <img src="assets/screenshots/courses_page.png" alt="Courses" width="500"/>
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/course_details.png" alt="Course Details" width="700"/>
+  <img src="assets/screenshots/course_details.png" alt="Course Details" width="500"/>
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/my_courses.png" alt="My Courses" width="700"/>
+  <img src="assets/screenshots/my_courses.png" alt="My Courses" width="500"/>
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/admin_dashboard.png" alt="Admin Dashboard" width="700"/>
+  <img src="assets/screenshots/admin_dashboard.png" alt="Admin Dashboard" width="500"/>
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/educator_dashboard.png" alt="Educator Dashboard" width="700"/>
+  <img src="assets/screenshots/educator_dashboard.png" alt="Educator Dashboard" width="500"/>
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/esewa_payment.png" alt="eSewa Payment" width="700"/>
+  <img src="assets/screenshots/esewa_payment.png" alt="eSewa Payment" width="500"/>
 </p>
 
 ---
@@ -99,5 +99,6 @@ Visit: http://localhost/academyweb/
 ## ⚠️ Security Notes
 - **SQL Injection:** Switch to **prepared statements** in production  
 - **Passwords:** Replace `md5()` / plain text with `password_hash()` + `password_verify()`  
+
 
 
