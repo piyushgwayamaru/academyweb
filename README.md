@@ -22,7 +22,6 @@ Create, manage, sell, and take courses — with built-in reviews and **eSewa pay
 ## 📦 Prerequisites
 Make sure you have installed:
 - WAMP or XAMPP  
-- Composer  
 - A browser (Chrome/Firefox)  
 - A code editor (VS Code)  
 
@@ -41,12 +40,7 @@ Copy the project folder to your server root:
 3. Create a database named `course`  
 4. Import `course.sql` from the project folder  
 
-### 3. Install Dependencies
-Open terminal in the project folder and run:
-```bash
-composer install
-```
-### 4. Run the App
+### 3. Run the App
 Visit: http://localhost/academyweb/
 
 
@@ -94,6 +88,7 @@ Visit: http://localhost/academyweb/
 </p>
 
 ---  
+
 
 
 
