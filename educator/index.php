@@ -23,21 +23,25 @@ $totalcourse = $result->num_rows;
 $sql = "SELECT tbl_enroll.id, tbl_course.price
 FROM tbl_enroll 
 INNER JOIN tbl_course ON tbl_enroll.course_id = tbl_course.id 
-WHERE tbl_course.educator_id = '$educator_id'";
+WHERE tbl_course.educator_id = '$educator_id' AND tbl_enroll.status = 1"; // Also check for successful enrollments
 
  $result = $conn->query($sql);
  $totalsold = $result->num_rows;
 
  $totalRevenue = 0;
+ $educatorRevenue = 0; // <-- THIS IS THE FIX. Initialize the variable here.
 
-// Fetch each row
-while ($row = $result->fetch_assoc()) {
-    // Access the 'price' column from each row
-    $price = $row['price'];
+// Fetch each row only if there are sales
+if ($totalsold > 0) {
+    while ($row = $result->fetch_assoc()) {
+        // Access the 'price' column from each row
+        $price = $row['price'];
 
-    // Increment total revenue by the price
-    $totalRevenue += $price;
-    $educatorRevenue = $totalRevenue - (0.3*$totalRevenue);
+        // Increment total revenue by the price
+        $totalRevenue += $price;
+    }
+    // Calculate educator revenue outside the loop
+    $educatorRevenue = $totalRevenue - (0.3 * $totalRevenue);
 }
 ?>
   <div class="col-sm-9" style="margin-top: 30px; margin-left:280px;">
