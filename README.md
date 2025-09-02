@@ -46,7 +46,7 @@ Copy the project folder to your server root:
 Open terminal in the project folder and run:
 ```bash
 composer install
-
+```
 ### 4. Run the App
 Visit: http://localhost/academyweb/
 
